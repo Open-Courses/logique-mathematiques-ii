@@ -1,0 +1,3 @@
+[submodule "latex-macros-math"]
+	path = latex-macros-math
+	url = https://github.com/dannywillems/latex-macros-math
