@@ -1,0 +1,201 @@
+\chapter{Saturation et topologie}
+
+Les hyperstructures et superstructures de $S$ ont été définies à partir de
+familles basés sur $\naturel$ et un ultrafiltre non principal $\mathcal{U}$ sur
+$\naturel$.
+
+On peut alors définir les mêmes hyperstructures et superstructures à partir
+d'une famille basée sur un ensemble infini quelconque $I$ et un ultrafiltre
+$\mathcal{U}$ sur $I$.
+
+Fixons un ensemble $S$ quelconque, $I$ un ensemble infini quelconque et
+$\mathcal{U}$ un ultrafiltre non principal sur $I$. Construisons
+$\hyperstructure{S}$ et $\superstructure{\hyperstructure{S}}$ depuis $S$, $I$ et
+$\mathcal{U}$.
+
+\begin{definition}
+	Soit $\kappa$ un cardinal infini.
+	On dit que $\superstructure{\hyperstructure{S}}$ est \textbf{$\kappa$-saturé} si pour tout
+	ensemble $\Gamma$ tel que $\cardinal{\Gamma} < \kappa$, toute famille
+	$\GSsequence{A}{\gamma}{\Gamma}$ est d'intersection non vide.
+
+	On dit ausi que $\superstructure{\hyperstructure{S}}$ est \textbf{un modèle
+	$\kappa$-saturé.}
+\end{definition}
+
+\section{Topologie générale}
+
+Soit $(X, \tau)$ un espace topologique, et posons $S = \real \union X$.
+
+Construisons alors un modèle $\kappa$-saturé $\superstructure{\hyperstructure{S}}$.
+
+\begin{definition}
+	Soit $a \in X$. On définit \textbf{le monade de $a$} comme le sous-ensemble
+	$\monadOf{a}$ de $\hyperstructure{X}$ défini par:
+	\begin{equation}
+		\monadOf{a} = \inter \GSsetDef{\hyperstructure{\mathcal{O}} \subseteq
+		\hyperstructure{X}}{a \in \mathcal{O} \wedge \mathcal{O} \in \tau}
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	Soit $\hyperelement{x} \in \hyperstructure{X}$. On dit que
+	\textbf{$\hyperelement{x}$ est proche d'un
+	standard} s'il existe $a \in X$ tel que $\hyperelement{x} \in \monadOf{a}$,
+	c'est-à-dire qu'il existe $a \in A$ tel que $\hyperelement{x}$ est dans le
+	monade de $a$. On dit aussi que \textbf{$\hyperelement{x}$ est proche du
+	standard $a$}.
+
+	L'ensemble de tous les points proches d'un standard est noté
+	$\nearStandardSetOf{\hyperstructure{X}}$.\footnote{Pour
+		\textit{nearstandard}.}
+\end{definition}
+
+La définition de monade nous permet de caractériser avec des objets non
+standards les ouverts, fermés et compacts de
+de $X$.
+
+\begin{proposition}
+	Soit $A$ un sous-ensemble de $X$. Alors
+	\begin{enumerate}
+		\item $A$ est ouvert dans $(X, \tau)$ ssi pour tout $a \in A$, $\monadOf{a}
+			\subseteq \hyperstructure{A}$.
+		\item $A$ est fermé dans $(X, \tau)$ ssi quelque soit $x \in
+			\hyperstructure{A}$ proche d'un standard $a \in X$, $a \in A$.
+		\item $A$ est compact ssi tout $x \in \hyperstructure{A}$ est proche
+			d'un standard $a \in A$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	\begin{enumerate}
+		\item $(1)$ Si $A$ est ouvert dans $(X, \tau)$, alors $\monadOf{a}
+			\subseteq \hyperstructure{A}$ par définition du monade de $a$.
+
+			Supposons maintenant que $A$ n'est pas ouvert et montrons qu'il
+			existe $a \in A$ tel qe $\monadOf{a} \inter \hyperstructure{A} \neq
+			\emptyset$. Comme $A$ n'est pas ouvert, il existe $a \in A$ tel que
+			pour tout ouvert $\mathcal{O}$ contenant $a$, $\mathcal{O} \inter
+			\comp{A} \neq \emptyset$.
+
+			Par saturation, en indiçant par les ouverts de $(X, tau)$ la suite
+			d'ensemble
+			\begin{equation}
+				A_{\mathcal{O}} := \GSsetDef{\hyperstructure{\mathcal{O}} \inter
+				\hyperstructure{(\comp{A})}}{a \in \mathcal{O} \wedge
+				\mathcal{O} \in \tau}
+			\end{equation}
+			on obtient
+			\begin{equation}
+				\inter_{\mathcal{O} \in \tau} A_{\mathcal{O}} \neq \emptyset
+			\end{equation}
+			Il est alors clair que tout élément $x \in \inter_{\mathcal{O} \in
+		\tau} A_{\mathcal{O}}$ n'appartient pas à $A$ mais est bien dans $\monadOf{a}$.
+
+		\item $(2)$ Soit $A$ compact et supposons que pour tout $a \in A$, il
+			existe $x \in X$ et un voisinage ouvert $V_{a}$ contenant $a$ tel
+			que $x \notin \hyperstructure{V_{a}}$.
+
+			La fmaille $\GSsequence{V}{a}{A}$ étant un recouvrement de $A$ et
+			$A$ étant compact, il existe un sous-recouvrement fini $V_{a_{1}},
+			\cdots, V_{a_{n}}$ de $A$ ie $A \subseteq V_{a_{1}} \union \cdots
+			\union V_{a_{n}}$. Comme le passage à la version non standard est
+			stable par union finie, on a $\hyperstructure{A} \subseteq
+			\hyperstructure{V_{a_{1}}} \union \cdots \union
+			\hyperstructure{V_{a_{n}}}$. Contradiction avec le fait que $a$
+			appartient à aucun des $\hyperstructure{V_{a_{i}}}$.
+			\ldots
+	\end{enumerate}
+\end{proof}
+\fi
+
+Rappelons qu'un espace topologique $(X, \tau)$ est \textbf{Hausdorff} s'il est
+séparable, c'est-à-dire que tout point $x, y \in X$, il existe des voisinages
+ouverts $V_{x}$ et $V_{y}$ disjoints.
+
+\begin{proposition}
+	Soit $(X, \tau)$ un espace topologique de Hausdorff. Alors, tout point $x
+	\in ns(\hyperstructure{X})$ est proche d'un unique non standard $a$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $x \in \nearStandardSetOf{\hyperstructure{X}}$ ie il existe $a \in X$
+	tel que $x \in \monadOf{a}$.
+
+	S'il existait $b \in X$ tel que $x \in \mu(b)$, alors $a$ et $b$
+	appartiennent aux mêmes ouverts. Or, il existe des ouverts les séparant.
+\end{proof}
+\fi
+
+Vu l'unicité, on appelle cet unique $a$ la \textbf{partie
+standard} de $x$, et est notée $\standardPart{x}$ ou $\standardPartExpo{x}$.
+
+On peut ainsi définir la fonction
+\begin{equation}
+	st : \nearStandardSetOf{\hyperstructure{X}} \rightarrow X : x \rightarrow st(x)
+\end{equation}
+
+Cette notion étend bien la notion de non standard définie pour les hyperréels.
+
+\begin{definition}
+	Soient $x, y \in X$. On dit que $x$ et $y$ sont \textbf{infiniment proches}
+	s'ils sont proches du même standard $a \in X$.
+\end{definition}
+
+On obtient alors une autre formulation des équivalences données ci-dessous pour
+les ouverts, fermés et compacts.
+
+\begin{enumerate}
+	\item $A$ est ouvert ssi $st^{-1}(A) \subseteq A$
+	\item $A$ est fermé ssi $\hyperstructure{A} \inter
+		\nearStandardSetOf{\hyperstructure{X}} \subseteq st^{-1}(A)$.
+	\item $A$ est compact ssi $\hyperstructure{A} \subseteq st^{-1}(A)$.
+\end{enumerate}
+
+\begin{proposition}
+	Soit $(X, \tau)$ un espace de Hausdorff et soit $A$ un sous ensemble interne
+	de $\hyperstructure{X}$.
+
+	Alors $st(A)$ est fermé dans $(X, \tau)$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $a \in \adh{A}$. On a, pour tout voisinage de $a$ ouvert
+	$\mathcal{O}_{a}$ , $\mathcal{O}_{a} \inter st(A) \neq \emptyset$.
+	D'où cette propriété reste vraie par intersection finie. Par saturation, la
+	famille $\GSsequence{B}{a}{A}$ définie par
+	\begin{equation}
+		B_{a} = \GSsetDef{\hyperstructure{\mathcal{O}_{a}} \inter
+	A}{\mathcal{O}_{a} \in \tau}
+	\end{equation}
+	est d'intersection non vide.
+
+	Soit $x$ un élément de l'intersection, en particulier. Alors, $x \in \monadOf{a}$ car $x \in
+	\mathcal{O}_{a}$ pour tout $\mathcal{O}_{a} \in \tau$. D'où, $st(x) = a$ et
+	$a \in st(A)$ car $x \in A$ en particulier.
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $(X, \tau_{X})$ et $(Y, \tau_{Y})$ deux espaces topologiques. Soit $f :
+	X \rightarrow Y$ et soit $a \in X$.
+	Les assertions suivantes sont équivalentes:
+	\begin{enumerate}
+		\item $f$ est continue en $a$.
+		\item $\hyperstructure{f}(\monadOf{a}) \subseteq \monadOf{f(a)}$
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	$(1) \implies (2)$:
+
+	Soit $x \in \monadOf{a}$. Montrons que $\hyperstructure{f}(x) \in
+	\monadOf{f(a)}$, c'est-à-dire que $\hyperstructure{f}(x) \in
+	\hyperstructure{\mathcal{O}_{f(a)}}$ pour tout ouvert
+	$\mathcal{O}_{f(a)}$ contenant $f(a)$.
+\end{proof}
+\fi

@@ -1,0 +1,142 @@
+\chapter{Superstructures et mesures de Loeb}
+
+Rappelons que la construction des hyperréels a comme base un ultrafiltre et une
+relation d'équivalence. On prend alors le quotient pour obtenir $\hyperreal$.
+
+On peut remarquer que cette construction est valable pour un ensemble quelconque
+$S$.
+
+En effet, soit $S$ un ensemble quelconque. Soit $\mathcal{U}$ un ultrafiltre non
+principal sur $\naturel$. On construit alors les hyperéléments de $S$, dont
+l'ensemble est noté $\hyperstructure{S}$ construit comme
+$S/\mathcal{U}$.
+
+Comme les notions d'ensembles internes, de fonctions internes, d'ensembles
+hyperfinis, d'éléments non standards (etc) ont été définies en utilisant que des
+notions ensembles, on peut élargir ces notions à l'hyperstructure
+$\hyperstructure{S}$.
+
+Pour la suite, nous fixons un ensemble $S$.
+
+%Cependant, dès qu'on a définies les fonctions internes $\spanspace{f} :
+%\hyperstructure{S} \rightarrow \hyperstructure{S}$, on s'amuser à
+
+\begin{definition} [Superstructure]
+	Soit un ensemble $S$. On définit récursivement la suite $(V_{n}(S))_{n
+	\in \naturel}$ tel que
+	\begin{enumerate}
+		\item $V_{0}(S) = S$
+		\item $V_{n + 1}(S) = V_{n}(S) \union \powerSet{V_{n}(S)}$
+	\end{enumerate}
+
+	On définit alors \textbf{la superstructure de $S$}, notée
+	$\superstructure{S}$ comme
+
+	\begin{equation}
+		\superstructure{S} = \union_{n \in \naturel}V_{n}(S)
+	\end{equation}
+
+	Le rang d'un élément $x \in \superstructure{S}$ est le plus petit $n \in
+	\naturel$ tel que $x \in V_{n}(S)$.
+\end{definition}
+
+La motivation des superstructures est de pouvoir parler d'éléments de l'ensemble
+$S$, de fonctions $f : S \rightarrow S$ (élément de $V_{3}(S)$) et de fonctions
+$f' : \GSset{f : S \rightarrow S} \rightarrow \GSset{f : S \rightarrow S}$
+(élément de $V_{6}(S)$) comme des éléments d'un seul et même ensemble.
+
+Le rang d'un élément permet de \textit{reclasser} l'élément dans sa catégorie
+\og usuelle \fg. Par exemple, une fonction de $S$ dans $S$ est de rang $3$, un couple
+$(x, y) = \GSset{x, \GSset{x, y} } \in S^{2}$ est de rang $1$, un élément de $S$
+est de rang $0$.
+
+$\hyperstructure{S}$ étant aussi un ensemble, il est possible de définir
+$\superstructure{\hyperstructure{S}}$.
+
+Nous pouvons voir les différentes constructions grâce au diagramme:
+
+\begin{displaymath}
+	\xymatrix{ S \ar[d]^{1} \ar[r]^{2} & \hyperstructure{S} \ar@{.>}[d]^{3} \\
+	\superstructure{S} \ar@{~>}[r]^{4} & \superstructure{\hyperstructure{S}}}
+\end{displaymath}
+
+où $1$ est la construction de la superstructure de $S$ et $2$ celle
+l'hyperstructure de $S$.
+$3$ représente la construction de la superstructure de $\hyperstructure{S}$. La
+dernière flèche, c'est-à-dire la $4$, est l'étape que nous allons réaliser:
+construire certains éléments de $\superstructure{\hyperstructure{S}}$ à partir
+d'éléments de $\superstructure{S}$, la superstructure de $S$. Ces éléments
+seront appelés \textit{élément internes}.
+
+Nos éléments internes \og généralisés \fg vont être des éléments de
+$\superstructure{\hyperstructure{S}}$ construits à partir de suites
+$\GSsequence{A}{n}{\naturel}$ d'éléments de $\superstructure{S}$. Remarquons que
+les $A_{n}$ sont de natures quelconques, c'est-à-dire que $A_{0}$ peut être un
+élément de $S$, $A_{1}$ un couple, $A_{2}$, une fonction, etc.
+
+
+\begin{definition} [Suite bornée]
+	Soit $\GSsequence{A}{n}{\naturel}$ une suite d'éléments de $\superstructure{S}$.
+
+	On dit que la suite $\GSsequence{A}{n}{\naturel}$ est \textbf{bornée} par $p
+	\in \naturel$ si
+	\begin{equation}
+		\naturel = \union_{i \in \GSset{0, \cdots, p}} \GSsetDef{n
+		\in \naturel}{A_{n} \text{ est de rang $i$}}
+	\end{equation}
+
+	Posons $B_{i} = \GSsetDef{n \in \naturel}{A_{n} \text{ est de rang $i$}}$.
+
+	Comme $\naturel \in \mathcal{U}$ et que l'union est finie, il est sûr qu'un
+	des $B_{i}$ est dans $\mathcal{U}$ et celui-ci est unique.
+
+	Ce naturel $i$ est appelé \textbf{le rang de la suite
+		$\GSsequence{A}{n}{\naturel}$}.
+\end{definition}
+
+Une suite de $\superstructure{S}$ est donc bornée si le rang de ses éléments
+n'explose pas.
+
+Remarquons que dans le cas des hyperréels, nous n'avons travaillé qu'avec des
+éléments de rang $1$ pour les ensembles internes et $3$ pour les fonctions
+internes.
+
+A partir de suites bornées, nous allons maintenant définir des éléments de
+$\superstructure{\hyperstructure{S}}$.
+
+Soit $\GSsequence{A}{n}{\naturel}$ une suite bornée d'éléments de
+$\superstructure{S}$.
+
+Si $\GSsequence{A}{n}{\naturel}$ est de rang $0$, chaque élément de la suite est
+simplement un élément $s \in S$. D'où, l'hyperélément $\hyperelementSequence{A}
+\in \hyperstructure{S}$.
+
+Supposons que nous avons défini les éléments $\hyperelementSequence{B}$ pour les
+éléments de $\superstructure{S}$ de rang $i$ et définissons les éléments
+$\hyperelementSequence{B}$ pour les éléments de $\superstructure{S}$ de rang $i
++ 1$.
+
+Si $\GSsequence{A}{n}{\naturel}$ est de rang $i + 1$, on définit l'hyperélément
+$\hyperelementSequence{A}$ comme
+
+\begin{equation}
+	\GSsetDef{\hyperelementSequence{B}}{\GSsequence{B}{n}{\naturel} \text{ est de rang $\leq i$}
+		\wedge \GSsetDef{n \in \naturel}{B_{n} \in A_{n}} \in \mathcal{U}}
+\end{equation}
+
+Les éléments $\hyperelementSequence{A}$ définis ainsi, par récurrence sur le rang, sont
+dans $\superstructure{\hyperstructure{S}}$. Nous allons nous servir de ces éléments pour
+définir nos éléments internes.
+
+\begin{definition}
+	Soit $x \in \superstructure{\hyperstructure{S}}$.
+
+	On dit que $x$ est \textbf{interne} s'il est de la forme $\spanspace{A_{n}}$
+	résultant de la construction précédente.
+
+	Si $\GSsetDef{n \in \naturel}{A_{n} \text{ est fini}} \in \mathcal{U}$, $x$
+	est \textbf{hyperfini}.
+
+	Un ensemble interne $\nonStandardVersion{x}$ de la forme $\spanspace{A}$ est appelé
+	\textbf{standard}.
+\end{definition}

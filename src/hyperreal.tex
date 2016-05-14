@@ -1,0 +1,767 @@
+\chapter{Analyse non standard et hyperréels}
+
+\section{Construction}
+
+Nous allons construire l'ensemble des hyperréels qui étendra le corps des réels.
+Nous définirons ensuite les ensembles internes, les éléments infinitésimaux et
+les éléments finis. Nous pourrons donner une définition précise de la notion
+d'infénitésimal à travers les éléments infinitésimaux et nous verrons le lien
+avec les suites.
+
+On pourra remarquer que la notion d'hyperréel peut être étendue à n'importe quel
+ensemble $S$. On parlera alors de l'hyperstructure de $S$.
+
+Soit $\real$ l'ensemble des réels. Soit $\mathcal{U}$ un ultrafiltre non
+principal sur $\naturel$.
+
+On définit la relation d'équivalence $\sim$ sur $\real^{\naturel}$ tel que
+\begin{equation}
+	\GSsequence{x}{n}{\naturel} \sim \GSsequence{y}{n}{\naturel} \equivalence \GSsetDef{n \in \naturel}{x_{n} = y_{n}} \in \mathcal{U}
+\end{equation}
+
+On obtient alors \textbf{l'ultrapuissance de $\real$} noté $\real^{\mathcal{U}}$,
+ou encore $\hyperreal$. Cet ultrapuissance est appelé \textbf{l'ensemble des
+hyperréels}.
+
+On note les éléments de $\hyperreal$ par $\hyperelement{x}$,
+$\hyperelementSequence{x}$ quand nous devons spécifier de quelle suite
+l'hyperréel a été construit. Nous utiliserons plus rarement la notation
+$\hyperelement{x}{\mathcal{U}}$ pour $\hyperelement{x}$ (resp.
+$\hyperelementSequenceUltra{x}{\mathcal{U}}$) quand nous voulons spécifier l'ultrafiltre
+sous-jacent.
+
+Nous ferons la distinction quand cela est nécessaire mais la plupart du temps,
+nous utiliserons $\hyperelement{x}$.
+
+\begin{definition} [Hyperréel de même forme]
+	Soient $\hyperelement{x}$, $\hyperelement{y}$ deux hyperréels. On dit que
+	$\hyperelement{x}$ et $\hyperelement{y}$ sont \textbf{de la même forme}
+	s'ils appartiennent à la même classe d'équivalence. On dit aussi que
+	$\hyperelement{x}$ (resp. $\hyperelement{y}$) est de la forme
+	$\hyperelement{y}$ (resp. $\hyperelement{x}$).
+\end{definition}
+
+On peut étendre les opérations et l'ordre usuels de $\real$ à $\hyperreal$ de la façon
+suivante:
+
+Soient $\hyperelementSequenceFull{x}$ et $\hyperelementSequenceFull{y}$
+\begin{enumerate}
+	\item $\hyperelementSequenceFull{x} +_{\hyperreal} \hyperelementSequenceFull{y} = [(x_{n} +
+		y_{n})_{n \in \naturel}]_{\mathcal{U}}$
+	\item $\hyperelementSequenceFull{x} ._{\hyperreal} \hyperelementSequenceFull{y} = [(x_{n} .
+		y_{n})_{n \in \naturel}]_{\mathcal{U}}$
+	\item $\hyperelementSequenceFull{x} <_{\hyperreal} \hyperelementSequenceFull{y} \equivalence
+		\GSsetDef{n \in \naturel}{x_{n} < y_{n}} \in \mathcal{U}$
+\end{enumerate}
+
+On obtient évidemment une injection de $\real$ dans $\hyperreal$ avec
+\begin{equation}
+	i : \real \rightarrow \hyperreal : x \rightarrow [(x, x, \dots)]_{\mathcal{U}}
+\end{equation}
+
+où on prend la classe d'équivalence de la suite constante de valeur $x$. Nous
+garderons la notation $\nonStandardVersion{x}$ pour désigner l'hyperréel défini
+à partir du réel $x$. On dit que $\nonStandardVersion{x}$ est la \textbf{version
+non standard} de $x$. Nous définirons plus tard les versions non standard des
+sous-ensembles de $\real$.
+
+Ces deux opérations et l'ordre définies étendent les opérations réelles et
+donnent une structure de corps ordonné sur $\hyperreal$.
+
+\begin{proposition}
+	$(\hyperreal, +_{\hyperreal}, ._{\hyperreal}, \nonStandardVersion{0},
+	\nonStandardVersion{1},
+<_{\hyperreal})$ est un corps ordonné.
+\end{proposition}
+
+\section{Eléments infinitésimaux et finis}
+
+Maintenant que nous avons construit les hyperréels, nous allons distinguer trois
+types d'éléments. Nous souhaitons définir \textit{être proche de zéro} ie
+\textit{infinitésimal}, \textit{être proche d'un réel} et \textit{être infini}.
+
+\begin{definition} [Infinitésimal]
+	Soit $\hyperelement{x} \in \hyperreal$.
+
+	On dit que $\hyperelement{x}$ est \textbf{infinitésimal} si pour tout $a \in
+	\real^{> 0}$,
+	\begin{equation}
+		\nonStandardVersion{-a} \leq \hyperelement{x} \leq \nonStandardVersion{a}
+	\end{equation}
+\end{definition}
+
+\begin{exemple}
+	$\nonStandardVersion{0}$, $\hyperelementSequenceFullNoIndice{\frac{1}{n}}$ et
+	$\hyperelementSequenceFullNoIndice{\frac{1}{\sqrt{n}}}$ sont des infinitésimaux.
+\end{exemple}
+
+\begin{definition} [Fini et infini]
+	Soit $\hyperelement{x} \in \hyperreal$.
+
+	On dit que $\hyperelement{x}$ est \textbf{fini} si il existe $a \in \real^{> 0}$,
+	\begin{equation}
+		\nonStandardVersion{-a} \leq \hyperelement{x} \leq \nonStandardVersion{a}
+	\end{equation}
+
+	L'ensemble des hyperréels finis est noté $\finiteSet{\hyperreal}$.
+
+	Sinon, $\hyperelement{x}$ est dit \textbf{infini}.
+\end{definition}
+
+\begin{exemple}
+	Toutes les versions non standard $\nonStandardVersion{x}$ d'un réel $x$ sont
+	finies. Les hyperréels $\hyperelementSequenceFullNoIndice{n}$,
+	$\hyperelementSequenceFullNoIndice{n^{2}}$ sont infinis.
+\end{exemple}
+
+\begin{proposition}
+	Soient $\hyperelement{x}, \hyperelement{y} \in \hyperreal$. Alors
+
+	\begin{enumerate}
+		\item Si $\hyperelement{x}$ et $\hyperelement{y}$ sont infinitésimaux,
+			alors $\hyperelement{x} + \hyperelement{y}$ est infinitésimal.
+		\item Si $\hyperelement{x}$ et $\hyperelement{y}$ sont finis, alors
+			$\hyperelement{x} + \hyperelement{y}$ est fini.
+		\item Si $\hyperelement{x}$ est fini et $\hyperelement{y}$ est infini,
+			alors $\hyperelement{x} \hyperelement{y}$ est infini.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Evident.
+\end{proof}
+\fi
+
+\begin{definition} [Infiniment proches]
+	Soient $\hyperelement{x}$, $\hyperelement{y} \in \hyperreal$.
+
+	On dit que $\hyperelement{x}$ et $\hyperelement{y}$ sont \textbf{infiniment
+	proches} si $\hyperelement{x} - \hyperelement{y}$ est infinitésimal.
+
+	On note alors $\hyperelement{x} \infinelyClosed \hyperelement{y}$.
+\end{definition}
+
+\begin{proposition}
+	Soit $\hyperelement{x} \in \finiteSet{\hyperreal}$ un hyperréel fini.
+
+	Alors, il existe un unique $a \in \real$ et un unique
+	$\nonStandardVersion{\epsilon} \in \hyperreal$
+	infinitésimal tel que
+	\begin{equation}
+		\hyperelement{x} = \nonStandardVersion{a} +
+		\nonStandardVersion{\epsilon}
+	\end{equation}
+
+	En particulier, il existe un unique réel $a$ tel que $\hyperelement{x}
+	\infinelyClosed \nonStandardVersion{a}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{definition} [Partie standard]
+	Soit $\hyperelement{x} \in \hyperreal$ fini.
+
+	L'unique réel $a$ tel que $\nonStandardVersion{a} \infinelyClosed
+	\hyperelement{x}$ est appelé \textbf{partie standard de $\hyperelement{x}$}
+	et est noté $\standardPartExpo{x}$ ou encore $\standardPart{x}$. Nous
+	utiliserons la notation $\standardPart{x}$.
+\end{definition}
+
+\begin{notation}
+	Pour $A \subseteq \hyperreal$ un sous-ensemble d'hyperréel fini, on note
+	\begin{equation}
+		\standardPart{A} = \GSsetDef{st(x)}{x \in A}
+	\end{equation}
+\end{notation}
+
+Montrons quelques applications des infinitésimaux et plus généralement des
+notions que nous avons vues. Nous allons montrer des résultats usuels d'analyse
+grâce à l'analyse non standard.
+
+\begin{proposition}
+	Soit $\GSsequence{x}{n}{\naturel}$ une suite de réels convergeant vers un
+	réel $x \in \real$.
+
+	Alors, $\hyperelementSequence{x} \infinelyClosed \nonStandardVersion{x}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Nous devons montrer que pour tout $a \in \real^{> 0}$, on a
+	\begin{equation}
+		\nonStandardVersion{x - a} < \hyperelementSequence{x} < \nonStandardVersion{x +
+		a}
+	\end{equation}
+	Pour un $\epsilon > 0$ fixé, l'ensemble
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{x - \epsilon < x_{n} < x + \epsilon}
+	\end{equation}
+	est cofini, donc est dans l'ultrafiltre $\mathcal{U}$.
+\end{proof}
+\fi
+
+\section{Ensembles et fonctions internes}
+
+\begin{definition} [Ensembles internes et externes]
+	Soient $\GSsequence{A}{n}{\naturel}$ une suite de sous-ensembles de $\real$.
+
+	On définit le sous ensemble hyperréel $\internalSet{A}$
+	tel que
+	\begin{equation}
+		\hyperelementSequence{x} \in \internalSet{A} \equivalence \GSsetDef{n \in
+		\naturel}{x_{n} \in A_{n}} \in \mathcal{U}
+	\end{equation}
+
+	En d'autre termes, pour appartenir à $\internalSet{A}$, il faut que les
+	éléments $x_{n}$ apparaissent \textit{assez souvent} dans les fibres $A_{n}$.
+
+	Les ensembles d'hyperréels pouvant être obtenus de cette façon sont appelés
+	\textbf{ensembles internes}. Les autres sont appelés \textbf{externes}.
+
+	On note l'ensemble des ensembles internes par $\setOfInternalSet{\hyperreal}$
+
+	% Besoin d'étendre la notion aux suites d'ordinaux pour définir la
+	% cardinalité \ldots
+	%On définit alors \textbf{la cardinalité interne de $\internalSet{A}$ comme
+	%l'élément \ldots
+\end{definition}
+
+\begin{exemple}
+	Soient $\hyperelementSequence{a}$ et $\hyperelementSequence{b}$ deux hyperréels. Alors l'ensemble
+	\begin{equation}
+		[ \hyperelementSequence{a}, \hyperelementSequence{b} ] =
+		\GSsetDef{\hyperelementSequence{x} \in
+	\hyperreal}{\hyperelementSequence{a} \leq \hyperelementSequence{x} \leq
+	\hyperelementSequence{b}}
+	\end{equation}
+	est interne et est obtenu en prenant $A_{n} = [a_{n}, b_{n}]$.
+\end{exemple}
+
+\begin{definition} [Fonctions internes]
+	Soient $\GSsequence{f}{n}{\naturel}$ une suite de fonctions de $\real$ dans
+	$\real$.
+
+	On définit la fonction $\internalFunction{f} : \hyperreal \rightarrow
+	\hyperreal$ tel que pour tous hyperréels $\hyperelementSequence{x}$
+	\begin{equation}
+		\internalFunction{f}(\hyperelementSequence{x}) =
+		\hyperelementSequenceNoIndice{f_{n}(x_{n})}
+	\end{equation}
+
+	Les fonctions $f : \hyperreal \rightarrow \hyperreal$ pouvent être obtenues
+	de cette façon, c'est-à-dire qu'il existe une suite
+	$\GSsequence{f}{n}{\naturel}$ tel que pour tout $\hyperelementSequence{x}
+	\in \hyperreal$,
+	$f(\hyperelementSequence{x})$ est de la forme
+	$\internalFunction{f}(\hyperelementSequence{x})$, sont appelées
+	\textbf{fonctions internes}.
+\end{definition}
+
+\begin{proposition}
+	Soient $\internalSet{A}$ et $\internalSet{B}$ deux ensembles internes,
+	alors
+	\begin{enumerate}
+		\item $\internalSet{A} \inter \internalSet{B} = \internalSetNoIndice{A_{n}
+			\inter B_{n}}$
+		\item $\internalSet{A} \union \internalSet{B} = \internalSetNoIndice{A_{n}
+			\union B_{n}}$
+		\item $\comp{\internalSet{A}} = \internalSetNoIndice{\comp{A_{n}}}$
+	\end{enumerate}
+
+	De manière générale, cela est vrai pour n'importe quelle intersection et
+	union finie.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Cela découle des propriétés sur les ultrafiltres.
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $(A^{i})_{i \in \naturel}$ une suite d'ensembles internes de
+	$\hyperreal$.
+	Chaque $A^{i}$ est de la forme $\internalSet{A^{i}}$.
+
+	Si pour tous $i \in \naturel$,
+	\begin{equation}
+		A^{i} \neq \emptyset
+	\end{equation}
+	alors il existe $i \in \naturel$ tel que pour tous $n \in \naturel$,
+	\begin{equation}
+		A^{i}_{n} \neq \emptyset
+	\end{equation}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	TODO
+	%Si pour tous $i \in \naturel$, il existe $n \in \naturel$ tel que $A^{i}_{n
+	%\in \naturel}$, on peut alors construire $\spanspace{A^{n}_{i}}$ qui est
+	%vide car pour tous $i \in \naturel$, $A^{n}
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $\internalSet{A} \subseteq \hyperreal$ un ensemble interne non vide.
+
+	Si $\internalSet{A}$ admet un majorant alors $\internalSet{A}$ admet un supremum.
+\end{proposition}
+
+\begin{proof}
+	Soit $\internalSet{A}$ borné par $\hyperelementSequence{a} \in \hyperreal$
+	c'est-à-dire que $\internalSet{A} < \hyperelementSequence{a}$ ie
+	\begin{equation}
+		\overbrace{\GSsetDef{n \in \naturel}{A_{n} < a_{n}}}^{= I} \in \mathcal{U}
+	\end{equation}
+	Pour tous $i \in I$, on a $\sup(A_{i})$ qui existe.
+	Posons $x_{i} = \sup(A_{i})$ si $i \in I$ et $0$ sinon.
+
+	En particulier, $x_{i}$ est bien un majorant de $\internalSet{A}$ et c'est
+	le plus petit. En effet, si $\hyperelementSequence{y}$ majore $\internalSet{A}$, notons $J$
+	l'ensemble
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{A_{n} < y_{n}} \in \mathcal{U}
+	\end{equation}
+	En particulier, on a $I \inter J \in \mathcal{U}$ et on a bien $[x_{i}] <
+	[y_{i}]$ car
+	\begin{equation}
+		I \inter J \subseteq \GSsetDef{n \in \naturel}{x_{i} < y_{i}}
+	\end{equation}
+	D'où,
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{x_{i} < y_{i}} \in \mathcal{U}
+	\end{equation}
+	Donc $\hyperelementSequence{x} < \hyperelementSequence{y}$.
+\end{proof}
+
+On vient donc de montrer que le principe du supremum reste valable pour les
+\textit{ensembles internes} dans le cas hyperréels.
+
+Ce principe permet de distinguer les ensembles internes et externes. Si un
+ensemble $\internalSet{A}$ n'a pas de borne supérieure, alors c'est un
+ensemble externe.
+
+\begin{proposition}
+	Soit $A \subseteq \hyperreal$ un ensemble interne.
+
+	\begin{enumerate}
+		\item Si $A$ contient des élément finis arbitrairement grands, alors $A$
+			contient un élément infini.
+		\item Si $A$ contient des éléments positifs infinis arbitrairement
+			petits, alors $A$ contient un élément fini.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	\begin{enumerate}
+		\item
+		\item
+	\end{enumerate}
+\end{proof}
+\fi
+
+\begin{theorem} [$\aleph_{1}$-saturation]
+	\label{theorem:aleph_1_saturation}
+	Soit $(A^{i})_{i \in \naturel}$ une suite d'ensembles internes de
+	$\hyperreal$ tel que pour tous $I \in \naturel$
+	\begin{equation}
+		\inter_{i \leq I} A^{i} \neq \emptyset
+	\end{equation}
+	alors
+	\begin{equation}
+		\inter_{n \in \naturel} A^{n} \neq \emptyset
+	\end{equation}
+\end{theorem}
+
+Remarquons que cela n'est pas nécessairement vrai que cela reviendrait à dire
+que l'intersection dénombrable est stable dans un ultrafiltre, ce qui n'est pas
+nécéssairement vrai.
+
+\ifdefined\outputproof
+\begin{proof}
+	Les $A^{i}$ sont de la forme $\spanspace{A^{i}_{n}}$. Comme
+	\begin{equation}
+		\inter_{i \leq I} A^{i} \neq \emptyset
+	\end{equation}
+	pour tous $I \in \naturel$, les $A^{i} \neq
+	\emptyset$. En particulier, on peut supposer que $A^{0}_{n}$ est non vide
+	pour tous $n \in \naturel$.
+
+	On a, pour tous $I \in \naturel$,
+	\begin{equation}
+		\inter_{i \leq I} \spanspace{A^{i}_{n}} = \spanspace{\inter_{i \leq I}
+		A^{i}_{n}}
+	\end{equation}
+	ce qui implique
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{\inter_{i \in I} A^{i}_{n} \neq \emptyset} \in
+		\mathcal{U}
+	\end{equation}
+
+	Soit $n \in \naturel$. Posons
+	\begin{equation}
+		I_{n} = \max \overbrace{\GSsetDef{I \in \naturel}{\inter_{i \leq I}
+		A^{i}_{n}} \neq \emptyset \wedge I \leq n}^{= X_{n}}
+	\end{equation}
+
+	Comme on a supposé que $A^{0}_{n}$ est non vide pour tous $n \in \naturel$,
+	on a $I_{n} \geq 0$ car l'ensemble est non vide ($0$ appartient pour tous $n
+	\in \naturel$) et le max existe car $I \leq n$.
+
+	Pour $n$ fixé, on prend un élément $x_{n} \in \inter_{i \in I_{n}}
+	A^{i}_{n}$. On construit ainsi une suite $(x_{n})_{n \in \naturel}$.
+
+	Montrons maintenant que $[x_{n}] \in A^{I}$ pour tous $I \in \naturel$. Pour
+	un $I \in \naturel$ fixé, on a
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{I \leq I_{n}} \subseteq \GSsetDef{n \in
+		\naturel}{x_{n} \in A^{I}_{n}}
+	\end{equation}
+	car si $I \leq I_{n}$, on a $I \in X_{n}$ et par conséquence, comme $x_{n}
+	\in \inter_{i \in I_{n}} A^{i}_{n}$ et $\inter_{i \in I} A^{i}_{n} \subseteq \inter_{i
+		\in I_{n}} A^{i}_{n}$, $n \in \GSsetDef{m \in \naturel}{x_{m} \in
+		A^{I}_{m}}$.
+
+	De plus, par définition de $I_{n}$.
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{I \leq I_{n}} = \GSsetDef{n \in \naturel}{I
+		\leq n} \inter \GSsetDef{n \in \naturel}{\inter_{i \leq I} A^{i}_{n}
+	\neq \emptyset}
+	\end{equation}
+	Comme $\GSsetDef{n \in \naturel}{I \leq n}$ est cofini, il appartient à
+	$\mathcal{U}$. D'où $\GSsetDef{n \in \naturel}{I \leq I_{n}} \in
+	\mathcal{U}$ et par conséquence,
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{x_{n} \in A^{I}_{n}} \in \mathcal{U}
+	\end{equation}
+	ie $[x_{n}] \in A^{I}$.
+\end{proof}
+\fi
+
+\begin{corollary}
+	Soit $\spanspace{A^{i}}_{i \in \naturel}$ une suite d'ensembles internes de
+	$\hyperreal$.
+	Alors, les assertions suivantes sont équivalentes
+	\begin{enumerate}
+		\item $\union_{i \in \naturel} A^{i}$ est interne
+		\item il existe $n \in \naturel$ tel que
+			\begin{equation}
+				\union_{i \in \naturel} A^{i} = \union_{i \leq n} A^{i}
+			\end{equation}
+	\end{enumerate}
+\end{corollary}
+
+\ifdefined\outputproof
+\begin{proof}
+	$(2) \implies (1)$ est évident.
+
+	$(1) \implies (2)$ Supposons que $\union_{n \in \naturel A_{n}}$ est
+	interne et posons $A = \union_{n \in \naturel A_{n}}$. Alors, pour tout $n
+	\in \naturel$, $A/A_{n}$ est aussi interne.
+	De plus,
+	\begin{equation}
+		\inter_{n \in \naturel} A/A_{n} = \emptyset
+	\end{equation}
+	Donc, par la contraposée de la $\aleph_{1}$-saturation
+	(\ref{theorem:aleph_1_saturation}), il existe $N \in \naturel$ tel que
+	\begin{equation}
+		\inter_{n \leq N} A/A_{n} = \emptyset
+	\end{equation}
+	c'est-à-dire
+	\begin{equation}
+		A = \union_{n \leq N} A_{n}
+	\end{equation}
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $A \subseteq \hyperreal$ un sous-ensemble interne.
+
+	Alors, $st(A)$ est fermé dans $(\real, \tau_{\abs{.}})$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\section{Ensembles standards et hyperfinis}
+
+Pour les hyperréels $\hyperelement{x}$, on a distingué ceux qui étaient finis. On a alors
+défini une fonction $st : Fin(\hyperreal) \rightarrow \real$ qu'on a appelé la
+partie standard d'un élément fini.
+Nous allons définir la même chose, mais cette fois-ci avec les fonctions et les
+ensembles.
+
+\begin{definition}
+	Soit $A \subseteq \real$ un sous-ensemble réel. On définit \textbf{la
+	version non standard de $A$} comme l'ensemble interne $\nonStandardVersion{A} =
+	\internalSet{A}$ où pour tous $n \in \naturel$, $A_{n} = A$.
+
+	On dit qu'un sous-ensemble de $\hyperreal$ est \textbf{standard} s'il
+	est de la forme $\nonStandardVersion{A}$.
+\end{definition}
+
+\begin{definition}
+	Soit $f : \real \rightarrow \real$ une fonction. On définit \textbf{la
+	version non standard de $f$} comme la fonction interne
+	\begin{equation}
+		\nonStandardVersion{f} = \internalFunction{f} : \hyperreal \rightarrow \hyperreal
+	\end{equation}
+
+	où pour tous $n \in \naturel$, $f_{n} = f$.
+
+	On dit qu'une fonction interne $\internalFunction{f}$ est \textbf{standard}
+	si elle est de la forme $\nonStandardVersion{f}$.
+\end{definition}
+
+%\begin{remarque}
+	%Pour un ensemble $A \subseteq \real$, sa version non standard
+	%$\nonStandardVersion{A}$ contient bien plus d'élément que \textit{simplement} que
+	%$\nonStandardVersion{A}$.
+%\end{remarque}
+
+%\begin{proposition}
+	%Soit $A \subseteq \real$.
+
+	%$A$ est fini si et seulement si $\nonStandardVersion{A} = \nonStandardVersion{A}$.
+%\end{proposition}
+
+%\ifdefined\outputproof
+%\begin{proof}
+
+%\end{proof}
+%\fi
+
+Remarquons que la version non standard $\nonStandardVersion{f}$ d'une fonction $f :
+\real \rightarrow \real$ étend la fonction $f$ dans le sens que pour tous $a \in
+\real$:
+
+\begin{equation}
+	\nonStandardVersion{f}(\hyperelement{a}) =
+	\internalFunctionNoIndice{f}(\hyperelement{a}) = \hyperelement{f(a)} = i(f(a))
+\end{equation}
+
+On peut aussi former la version non standard des ensembles usuels. On construit
+ainsi
+\begin{enumerate}
+	\item $\nonStandardVersion{\naturel}$, noté $\hyperstructure{\naturel}$: les
+		naturels non standards, à partir de $\naturel$.
+	\item $\nonStandardVersion{\integer}$, noté $\hyperstructure{\integer}$: les
+		entiers non standards, à partir de $\integer$.
+	\item $\nonStandardVersion{\rational}$, noté $\hyperstructure{\rational}$:
+		les rationnels non standards, à partir de $\rational$.
+\end{enumerate}
+
+Les naturels non standards sont par exemples les classes d'équivalences de
+suites
+$\GSsequence{N}{n}{\naturel}$ où $\GSsetDef{n \in \naturel}{N_{n} \in \naturel}
+\in \mathcal{U}$, c'est-à-dire les classes d'équivalences des suites dont
+presque tous les éléments appartiennent à $\naturel$.
+
+Par exemple, $[(\frac{1}{2}, \frac{1}{4}, 1, 2, 3, \dots)]_{\mathcal{U}}$ est un
+naturel non standard.
+
+Nous allons continuer avec les ensembles hyperfinis.
+
+\begin{definition} [Ensemble hyperfini et cardinalité hyperfinie]
+	Soit un ensemble interne $\internalSet{A} \subseteq \hyperreal$. On dit
+	que $\internalSet{A}$ est \textbf{un ensemble hyperfini} si
+	\begin{equation}
+		\GSsetDef{n \in \naturel}{A_{n} \text{ est fini}} \in \mathcal{U}
+	\end{equation}
+
+	La cardinalité d'un ensemble hyperfini $\internalSet{A}$ est le naturel
+	non standard $\nonStandardVersion{\cardinal{A_{n}}}$ où $\cardinal{A_{n}}$ est la
+	cardinalité de $A_{n}$.
+\end{definition}
+
+\begin{remarque}
+	La cardinalité d'un ensemble hyperfini $\internalSet{A}$ est bien un
+	naturel non standard car l'ensemble des naturels décrivant les $A_{n}$ est
+	dans l'ultrafiltre, d'où la classe d'équivalence de la suite des cardinaux
+	est bien dans l'ultrafiltre, c'est-à-dire dans les naturels non standards.
+\end{remarque}
+
+\begin{exemple}
+	Soit $n \in \naturel$ et construisons l'élément $[n] \in \naturel$ à partir
+	de la suite constante de naturels de constante $n$, ie $(n, n, n, n, n,
+	\cdots)$.
+
+	Posons $A_{n} = \GSset{0, \frac{1}{n}, \frac{2}{n}, \cdots, \frac{n -
+	1}{n}, 1} \subseteq \naturel$ et construisons l'ensemble interne
+	$\internalSet{A}$.
+
+	Alors, pour tous $n \in \naturel$, $A_{n}$ est fini, de cardinalité $n + 1$.
+	Donc $\internalSet{A}$ est hyperfini de cardinalité $[n + 1]$.
+\end{exemple}
+
+Remarquons que les ensembles hyperfinis héritent de différentes propriétés des
+ensembles finis. Par exemple
+\begin{proposition}
+	Soient $\internalSet{A}$ et $\internalSet{B}$ un ensemble hyperfini. Alors
+	\begin{enumerate}
+		\item $\internalSet{A}$ et $\internalSet{B}$ possèdent un plus petit élément.
+		\item $\internalSet{A}$ et $\internalSet{B}$ possèdent un plus grand élément.
+		\item $\internalSet{A} \union \internalSet{B}$ est hyperfini.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Laissée au lecteur.
+\end{proof}
+
+D'autres notions peuvent être étendu aux ensembles hyperfinis à partir des
+ensembles finis.
+
+Prenons un ensemble hyperfini $A = \internalSet{A}$ et une fonction interne
+$f = \internalFunction{f}$. On peut définir la somme des images de $f$ sur $A$
+comme
+\footnote{Cela a bien du sens que $A_{n} \subseteq \real$ et
+$f_{n} : \real \rightarrow \real$}
+\begin{equation}
+	\sum_{a \in A} f(a) = \hyperelementSequenceNoIndice{\sum_{a_{n} \in A_{n}} f_{n}(a_{n})}
+\end{equation}
+
+
+% Besoin de définir bijections internes et de cardinalité interne.
+
+%Suites aux propriétés ci-dessus, on est amené à une définition équivalente
+%d'ensemble hyperfini.
+
+%\begin{proposition}
+	%Soit $\internalSet{A}$ un ensemble interne. Les assertions suivantes sont
+	%équiavlentes:
+	%\begin{enumerate}
+		%\item $\internalSet{A}$ est un ensemble hyperfini de cardinalité $[N]$
+	%\end{enumerate}
+%\end{proposition}
+
+\section{Calcul infinitésimal}
+
+Maintenant que nous avons défini la notion d'infinitésimaux, il est intéressant
+de faire l'analogie avec le calcul infinitésimal. Nous allons voir que la notion
+d'infinitésimaux n'est pas anodine. En fait, les hyperréels ont été développés
+pour donner une définition précise d'\textit{infinitésimaux}.
+
+\begin{proposition}
+	Soit $f : \real \rightarrow \real$ et $a \in \real$. Les assertions
+	suivantes sont équivalentes:
+	\begin{enumerate}
+		\item $f$ est continue en $a$
+		\item $\nonStandardVersion{f}(x) \infinelyClosed
+			\nonStandardVersion{f}(\nonStandardVersion{a})$ pour tous $x
+			\in \hyperreal$ tel que $x \infinelyClosed \nonStandardVersion{a}$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+La continuité de la composition de deux fonctions continues devient alors
+évidente.
+
+\begin{proposition}
+	Soient $f, g : \real \rightarrow \real$. Soit $a \in \real$ tel que $g$ est
+	continue en $a$ et $f$ est continue en $g(a)$.
+
+	Alors $f \circ g$ est continue en $a$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Si $x \infinelyClosed a$, alors $\nonStandardVersion{g}(x) \infinelyClosed \nonStandardVersion{g}(a)$ ($g$
+	continue en $a$) et
+	cela induit que $\nonStandardVersion{f}(\nonStandardVersion{g}(x))
+	\infinelyClosed \nonStandardVersion{f}(\nonStandardVersion{g}(a))$ car $f$ est continue en $g(a)$.
+
+	On a donc bien montré que $f \circ g$ est continue en $a$ car pour tous $x \infinelyClosed
+	a$, $(\nonStandardVersion{f} \circ \nonStandardVersion{g}) (x) \infinelyClosed (\nonStandardVersion{f}
+	\circ \nonStandardVersion{g})(a)$.
+\end{proof}
+\fi
+
+La propriété qu'une fonction continue sur un compact atteint ses bornes est
+aussi évident:
+
+\begin{proposition}
+	Soit $f : K \rightarrow \real$ une fonction continue et $K$ un compact de
+	$\real$.
+
+	Alors $f$ atteint ses bornes.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+On peut aussi donner une équivalence pour la notion de continuité uniforme.
+
+\begin{proposition}
+	Soit $f : \real \rightarrow \real$ et $A \subseteq \real$. Les assertions
+	suivantes sont équivalentes:
+
+	\begin{enumerate}
+		\item $f$ est uniformément continue sur $A$.
+		\item $\nonStandardVersion{f}(x) \infinelyClosed \nonStandardVersion{f}(y)$ pour tous éléments
+			non standards $x, y \in \nonStandardVersion{A}$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+On obtient alors une preuve simple de la proposition suivante:
+
+\begin{proposition}
+	Soit $f : K \rightarrow \real$ une fonction continue et $K$ un interval compact.
+	Alors $f$ est uniformément continue sur $K$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+La définition de dérivée a également une équivalence hyperréelle.
+
+\begin{proposition}
+	Soit $f : \real \rightarrow \real$ et $a \in \real$. Les assertions
+	suivantes sont équivalentes:
+
+	\begin{enumerate}
+		\item $f$ est dérivable en $a$
+		\item il existe $b \in \real$ tel que pour tous $x \in \hyperreal$
+			\begin{equation}
+				x \infinelyClosed [a] \implies \frac{\nonStandardVersion{f}(x) -
+				\nonStandardVersion{f}([a])}{x - [a]} \infinelyClosed b
+			\end{equation}
+			Si ce $b$ existe, alors, $b = f'(a)$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+% Chain Rule et solution équation différentielle.
+

@@ -1,0 +1,89 @@
+\chapter{Construction des hyperréels et des superstructures grace à une mesure}
+
+Pour le reste du document, nous fixons une mesure additive finie $m$ répondant
+aux critères précédent.
+
+\begin{notation}
+	Soit $\real$ l'ensemble des nombres réels. On note $\mathcal{S}$ l'ensemble
+	des suites réelles.
+\end{notation}
+
+\begin{definition}
+	On définit la relation $\approx$ sur l'ensemble $\mathcal{S}$ par
+	\begin{equation}
+		(a_{n}) \approx (b_{n}) \equiv m(\GSsetDef{n \in \naturel}{a_{n} = b_{n}})
+	\end{equation}
+\end{definition}
+
+\begin{proposition}
+	La relation $\approx$ définie précédemment est une relation d'équivalence sur
+	$\mathcal{S}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{definition}
+	Soit $\mathcal{S}$ l'ensemble des suites réelles et $\approx$ la relation
+	d'équivalence définie précédemment.
+
+	On appelle l'ensemble quotient $\mathcal{S} / \approx$ \textbf{l'ensemble des hyperréels} ou
+	\textbf{l'ensemble des réels non standards}.
+\end{definition}
+
+Construisons maintenant des opérations sur $\hyperreal$.
+
+\begin{definition}
+	Soit $\hyperreal$ l'ensemble des hyperréels et soient $[(a_{n})_{n \in
+	\naturel}]$ et $[(b_{n})_{n \in \naturel}]$ deux hyperréels.
+
+	On définit l'opération $+_{\hyperreal}$ tel que
+	\begin{equation}
+		[(a_{n})_{n \in \naturel}] +_{\hyperreal} [(b_{n})_{n \in \naturel}] = [(a_{n} +
+		b_{n})_{n \in \naturel}]
+	\end{equation}
+	et l'opération $._{\hyperreal}$ tel que
+	\begin{equation}
+		[(a_{n})_{n \in \naturel}] ._{\hyperreal}  [(b_{n})_{n \in \naturel}] =
+		[(a_{n} .
+		b_{n})_{n \in \naturel}]
+	\end{equation}
+
+	Par abus de notations, on omettra les indices sur les opérations.
+\end{definition}
+
+\begin{definition}
+	Soit $\hyperreal$ l'ensemble des hyperréels et soient $[(a_{n})_{n \in
+	\naturel}]$ et $[(b_{n})_{n \in \naturel}]$ deux hyperréels.
+
+	On définit la relation d'ordre $<_{\hyperreal}$ tel que
+	\begin{equation}
+		[(a_{n})_{n \in \naturel}] <_{\hyperreal} [(b_{n})_{n \in \naturel}]
+	\end{equation}
+	ssi
+	\begin{equation}
+		m(\GSsetDef{n \in \naturel}{a_{n} < b_{n}}) = 1
+	\end{equation}
+\end{definition}
+
+Remarquons que ces deux opérations et l'ordre défini permettent de retrouver des
+caractéristiques de $\real$.
+
+\begin{proposition}
+	Soit $\hyperreal$ l'ensemble des hyperréels, $+$ et $.$ les deux opérations
+	d'addition et de multiplication définies précédemment.
+	Soient $0_{\hyperreal} = [0]$, $1_{\hyperreal} = [1]$ et $<_{\hyperreal}$
+	l'ordre défini précédemment sur $\hyperreal$.
+
+	Alors $(\hyperreal, +, ., 0_{\hyperreal}, <_{\hyperreal})$ forme un corps
+	ordonné.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
