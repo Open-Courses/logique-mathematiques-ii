@@ -1,19 +1,25 @@
 \chapter{Saturation et topologie}
 
+Dans ce chapitre, nous allons montrer que les notions d'analyse standard comme
+la topologie, la continuité, les définitions d'ouverts, fermés, de compacts,
+ainsi que la théorie des espaces métriques peuvent être étendues à l'analyse non
+standard. Nous donnerons également des versions non standards de résultats
+d'analyse standard comme le théorème d'Ascoli et le théorème d'Alaoglu.
+
 Les hyperstructures et superstructures de $S$ ont été définies à partir de
 familles basés sur $\naturel$ et un ultrafiltre non principal $\mathcal{U}$ sur
 $\naturel$.
 
-On peut alors définir les mêmes hyperstructures et superstructures à partir
-d'une famille basée sur un ensemble infini quelconque $I$ et un ultrafiltre
-$\mathcal{U}$ sur $I$.
+Par un même procédé, on peut définir les mêmes notions d'hyperstructures et
+superstructures à partir d'une famille basée sur un ensemble infini quelconque
+$I$ et un ultrafiltre $\mathcal{U}$ sur $I$.
 
 Fixons un ensemble $S$ quelconque, $I$ un ensemble infini quelconque et
 $\mathcal{U}$ un ultrafiltre non principal sur $I$. Construisons
 $\hyperstructure{S}$ et $\superstructure{\hyperstructure{S}}$ depuis $S$, $I$ et
 $\mathcal{U}$.
 
-\begin{definition}
+\begin{definition} [$\kappa$-saturé]
 	Soit $\kappa$ un cardinal infini.
 	On dit que $\superstructure{\hyperstructure{S}}$ est \textbf{$\kappa$-saturé} si pour tout
 	ensemble $\Gamma$ tel que $\cardinal{\Gamma} < \kappa$, toute famille
@@ -23,26 +29,50 @@ $\mathcal{U}$.
 	$\kappa$-saturé.}
 \end{definition}
 
+Nous avons un théorème important qui nous dit que nous pouvons toujours trouvé
+un ultrafiltre $\mathcal{U}$ sur l'ensemble $I$ tel que le modèle
+$\superstructure{\hyperstructure{S}}$ est $\kappa$-saturé pour tout $\kappa <
+\cardinal{I}$.
+
+\begin{theorem}
+	Soit $\kappa$ un cardinal infini et soit $I$ un ensemble tel que
+	$\cardinal{I} = \kappa^{+}$ où $\kappa^{+}$ est le successeur de $\kappa$.
+
+	Soit $S$ un ensemble.
+
+	Alors, il existe un ultrafiltre $\mathcal{U}$ sur $I$ tel que
+	$\superstructure{\hyperstructure{S}}$ est $\kappa$-saturé.
+\end{theorem}
+
+Ce théorème est très intéressant car cela nous dit qu'étant donné un ensemble
+$S$ et sa superstructure $\superstructure{S}$, nous pouvons construire un modèle
+$\superstructure{\hyperstructure{S}}$ construit avec un ensemble $I$ tel que
+$\cardinal{I} > \cardinal{\superstructure{S}}$ et un ultrafiltre sur $I$ qui
+nous autorisera à prendre des familles indicées par $V(S)$ tout en pouvant
+utiliser la saturation. Un tel modèle est appelé un modèle \textbf{polysaturé}.
+
 \section{Topologie générale}
+
+\label{general_topology}
 
 Soit $(X, \tau)$ un espace topologique, et posons $S = \real \union X$.
 
-Construisons alors un modèle $\kappa$-saturé $\superstructure{\hyperstructure{S}}$.
+Prenons un modèle polysaturé $\superstructure{\hyperstructure{S}}$.
 
-\begin{definition}
-	Soit $a \in X$. On définit \textbf{le monade de $a$} comme le sous-ensemble
+\begin{definition} [Monade]
+	Soit $a \in X$. On définit \textbf{la monade de $a$} comme le sous-ensemble
 	$\monadOf{a}$ de $\hyperstructure{X}$ défini par:
 	\begin{equation}
-		\monadOf{a} = \inter \GSsetDef{\hyperstructure{\mathcal{O}} \subseteq
+		\monadOf{a} = \inter \GSsetDef{\nonStandardVersion{\mathcal{O}} \subseteq
 		\hyperstructure{X}}{a \in \mathcal{O} \wedge \mathcal{O} \in \tau}
 	\end{equation}
 \end{definition}
 
-\begin{definition}
+\begin{definition} [Proche d'un standard]
 	Soit $\hyperelement{x} \in \hyperstructure{X}$. On dit que
 	\textbf{$\hyperelement{x}$ est proche d'un
 	standard} s'il existe $a \in X$ tel que $\hyperelement{x} \in \monadOf{a}$,
-	c'est-à-dire qu'il existe $a \in A$ tel que $\hyperelement{x}$ est dans le
+	c'est-à-dire qu'il existe $a \in A$ tel que $\hyperelement{x}$ est dans la
 	monade de $a$. On dit aussi que \textbf{$\hyperelement{x}$ est proche du
 	standard $a$}.
 
@@ -51,19 +81,20 @@ Construisons alors un modèle $\kappa$-saturé $\superstructure{\hyperstructure{
 		\textit{nearstandard}.}
 \end{definition}
 
-La définition de monade nous permet de caractériser avec des objets non
+La définition de la monade nous permet de caractériser avec des objets non
 standards les ouverts, fermés et compacts de
 de $X$.
 
 \begin{proposition}
 	Soit $A$ un sous-ensemble de $X$. Alors
 	\begin{enumerate}
-		\item $A$ est ouvert dans $(X, \tau)$ ssi pour tout $a \in A$, $\monadOf{a}
-			\subseteq \hyperstructure{A}$.
-		\item $A$ est fermé dans $(X, \tau)$ ssi quelque soit $x \in
-			\hyperstructure{A}$ proche d'un standard $a \in X$, $a \in A$.
-		\item $A$ est compact ssi tout $x \in \hyperstructure{A}$ est proche
-			d'un standard $a \in A$.
+		\item $A$ est ouvert dans $(X, \tau)$ ssi pour tout $a \in A$,
+			$\monadOf{a} \subseteq \nonStandardVersion{A}$.
+		\item $A$ est fermé dans $(X, \tau)$ ssi quelque soit $\hyperelement{x}
+			\in \nonStandardVersion{A}$ proche d'un standard $a \in X$, $a \in
+			A$.
+		\item $A$ est compact ssi tout $\hyperelement{x} \in
+			\nonStandardVersion{A}$ est proche d'un standard $a \in A$.
 	\end{enumerate}
 \end{proposition}
 
@@ -71,27 +102,28 @@ de $X$.
 \begin{proof}
 	\begin{enumerate}
 		\item $(1)$ Si $A$ est ouvert dans $(X, \tau)$, alors $\monadOf{a}
-			\subseteq \hyperstructure{A}$ par définition du monade de $a$.
+			\subseteq \nonStandardVersion{A}$ par définition de la monade de $a$.
 
 			Supposons maintenant que $A$ n'est pas ouvert et montrons qu'il
-			existe $a \in A$ tel qe $\monadOf{a} \inter \hyperstructure{A} \neq
+			existe $a \in A$ tel qe $\monadOf{a} \inter \nonStandardVersion{A} \neq
 			\emptyset$. Comme $A$ n'est pas ouvert, il existe $a \in A$ tel que
 			pour tout ouvert $\mathcal{O}$ contenant $a$, $\mathcal{O} \inter
 			\comp{A} \neq \emptyset$.
 
-			Par saturation, en indiçant par les ouverts de $(X, tau)$ la suite
+			Par saturation, en indiçant par les ouverts de $(X, \tau)$ la suite
 			d'ensemble
 			\begin{equation}
-				A_{\mathcal{O}} := \GSsetDef{\hyperstructure{\mathcal{O}} \inter
-				\hyperstructure{(\comp{A})}}{a \in \mathcal{O} \wedge
+				A_{\mathcal{O}} := \GSsetDef{\nonStandardVersion{\mathcal{O}} \inter
+				\nonStandardVersion{(\comp{A})}}{a \in \mathcal{O} \wedge
 				\mathcal{O} \in \tau}
 			\end{equation}
 			on obtient
 			\begin{equation}
 				\inter_{\mathcal{O} \in \tau} A_{\mathcal{O}} \neq \emptyset
 			\end{equation}
-			Il est alors clair que tout élément $x \in \inter_{\mathcal{O} \in
-		\tau} A_{\mathcal{O}}$ n'appartient pas à $A$ mais est bien dans $\monadOf{a}$.
+			Il est alors clair que tout élément $\hyperelement{x} \in
+			\inter_{\mathcal{O} \in \tau} A_{\mathcal{O}}$ n'appartient pas à
+			$A$ mais est bien dans $\monadOf{a}$.
 
 		\item $(2)$ Soit $A$ compact et supposons que pour tout $a \in A$, il
 			existe $x \in X$ et un voisinage ouvert $V_{a}$ contenant $a$ tel
@@ -101,7 +133,7 @@ de $X$.
 			$A$ étant compact, il existe un sous-recouvrement fini $V_{a_{1}},
 			\cdots, V_{a_{n}}$ de $A$ ie $A \subseteq V_{a_{1}} \union \cdots
 			\union V_{a_{n}}$. Comme le passage à la version non standard est
-			stable par union finie, on a $\hyperstructure{A} \subseteq
+			stable par union finie, on a $\nonStandardVersion{A} \subseteq
 			\hyperstructure{V_{a_{1}}} \union \cdots \union
 			\hyperstructure{V_{a_{n}}}$. Contradiction avec le fait que $a$
 			appartient à aucun des $\hyperstructure{V_{a_{i}}}$.
@@ -139,9 +171,13 @@ On peut ainsi définir la fonction
 
 Cette notion étend bien la notion de non standard définie pour les hyperréels.
 
-\begin{definition}
-	Soient $x, y \in X$. On dit que $x$ et $y$ sont \textbf{infiniment proches}
+\begin{definition} [Infiniment proches]
+	Soient $\hyperelement{x}, \hyperelement{y} \in
+	\nearStandard{\hyperstructure{X}}$. On dit que $\hyperelement{x}$ et
+	$\hyperelement{y}$ sont \textbf{infiniment proches}
 	s'ils sont proches du même standard $a \in X$.
+
+	On note $\hyperelement{x} \infinelyClosed \hyperelement{y}$.
 \end{definition}
 
 On obtient alors une autre formulation des équivalences données ci-dessous pour
@@ -149,9 +185,9 @@ les ouverts, fermés et compacts.
 
 \begin{enumerate}
 	\item $A$ est ouvert ssi $st^{-1}(A) \subseteq A$
-	\item $A$ est fermé ssi $\hyperstructure{A} \inter
+	\item $A$ est fermé ssi $\nonStandardVersion{A} \inter
 		\nearStandardSetOf{\hyperstructure{X}} \subseteq st^{-1}(A)$.
-	\item $A$ est compact ssi $\hyperstructure{A} \subseteq st^{-1}(A)$.
+	\item $A$ est compact ssi $\nonStandardVersion{A} \subseteq st^{-1}(A)$.
 \end{enumerate}
 
 \begin{proposition}
@@ -185,7 +221,7 @@ les ouverts, fermés et compacts.
 	Les assertions suivantes sont équivalentes:
 	\begin{enumerate}
 		\item $f$ est continue en $a$.
-		\item $\hyperstructure{f}(\monadOf{a}) \subseteq \monadOf{f(a)}$
+		\item $\nonStandardVersion{f}(\monadOf{a}) \subseteq \monadOf{f(a)}$
 	\end{enumerate}
 \end{proposition}
 
@@ -193,9 +229,892 @@ les ouverts, fermés et compacts.
 \begin{proof}
 	$(1) \implies (2)$:
 
-	Soit $x \in \monadOf{a}$. Montrons que $\hyperstructure{f}(x) \in
-	\monadOf{f(a)}$, c'est-à-dire que $\hyperstructure{f}(x) \in
-	\hyperstructure{\mathcal{O}_{f(a)}}$ pour tout ouvert
+	Soit $x \in \monadOf{a}$. Montrons que $\nonStandardVersion{f}(x) \in
+	\monadOf{f(a)}$, c'est-à-dire que $\nonStandardVersion{f}(x) \in
+	\nonStandardVersion{\mathcal{O}_{f(a)}}$ pour tout ouvert
 	$\mathcal{O}_{f(a)}$ contenant $f(a)$.
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $(X, \tau_{X})$, $(Y, \tau_{Y})$ des espaces de Hausdorff tel que $(X,
+	\tau_{X})$ est localement compact.
+
+	Soit $f \in \continuousSpaceFunction{X}{Y}$ une fonction continue de $(X,
+	\tau_{X})$ dans $(Y, \tau_{Y})$ et $\hyperelement{f} \in
+	\nonStandardVersion{\continuousSpaceFunction{X}{Y}}$ un élément de la
+	version non standard de $\continuousSpaceFunction{X}{Y}$.
+
+	Alors, les assertions suivantes sont équivalentes:
+	\begin{enumerate}
+		\item $f = \standardPart{\hyperelement{f}}$
+		\item quelque soit $x \in X$ proche d'un standard $a$,
+			$\hyperelement{f}(\nonStandardVersion{x})$ est proche du standard
+			$f(a)$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{theorem} [de Tychonov]
+	Soit $\GSsequence{X}{i}{I}$ une famille d'espaces compacts.
+
+	Alors $\prod_{i \in I} X_{i}$ est compact.
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{theorem} [d'Alaoglu]
+	Soit $\GSnormedSpace{E}$ un espace de Banach et soit $\GSdual{E}$ son dual.
+
+	Alors, la boule unité dans $\GSdual{E}$ est faiblement compacte.
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\begin{theorem} [d'Ascoli]
+	Soit $\GSsequence{f}{i}{I}$ une famille de fonctions $f_{i} : X \rightarrow
+	\real$ où $(X, \tau)$ est un espace compact. Supposons que
+	$\GSsequence{f}{i}{I}$ est bornée et équicontinue.
+\end{theorem}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+\section{Complétions, compactifications et structures non standard}
+
+\label{completion_compactifitication_non_standard_hull}
+
+Dans cette partie, nous allons étendre les structures d'espaces métriques à une
+version non standard.
+
+Dans le premier chapitre, nous avons défini les éléments finis de $\hyperreal$,
+et nous avions noté cet ensemble $\finiteSet{\hyperreal}$. Les éléments finis
+étaient définis comme les hyperréels bornés par la version non standard d'un
+réel.
+Nous allons généraliser cette notion pour un espace métrique quelconque.
+
+Rappelons que nous travaillons dans $\superstructure{\hyperstructure{S}}$
+polysaturé où nous avons posé $S$ comme l'union de chaque ensemble que nous
+aurions besoin comme $X$, $\real$, etc. Cette hypothèse nous permet de parler des
+versions non standard de n'importe quel élément construit sur $X$, $\real$, etc.
+De plus, $\hyperstructure{S}$ est construit à partir d'un ensemble infini
+$I$ quelconque et d'un ultrafiltre non principal sur celui-ci: nous travaillons
+plus sur $\naturel$ !
+Cependant, certaines preuves seront données dans le cas simplifié où $I =
+\naturel$ et on supposera que l'ultrafiltre est non principal pour pouvoir
+utiliser les cofinis.\footnote{Est-ce immédiat si nous sommes dans un modèle
+	polysaturé ? En d'autres termes, est-ce qu'un ultrafiltre principal peut
+engendrer un modèle polysaturé ?}
+
+\subsection{Version non standard d'un espace métrique}
+
+Dans la section précédente \ref{general_topology} sur la généralisation d'un
+espace topologique à une version non standard, nous avons défini la monade d'un
+élément de l'espace topologique $(X, \tau)$. Comme un espace métrique $(X, d)$
+induit un espace topologique $(X, \tau_{d})$ où $\tau_{d}$ est la topologie
+engendrée par les boules ouvertes, nous pouvons également parler de la monade.
+Pour un élément $x \in X$, sa monade, notée $\monadOf{x}$, est
+définie comme
+
+\begin{align}
+	\monadOf{x} & = \bigcap_{\mathcal{O}_{x} \in \tau_{d}}
+	\nonStandardVersion{\mathcal{O}_{x}} \\
+	& = \bigcap_{\epsilon > 0} \nonStandardVersion{B(x, \epsilon)} \subseteq
+	\hyperstructure{X}
+\end{align}
+
+De plus, l'espace topologique induit $(X, \tau_{d})$ est de Hausdorff, donc tout
+élément $\hyperelement{x} \in \hyperstructure{X}$ est dans la monade d'un seul
+élément. Cet élément est appelé la partie standard de $\hyperelement{x} \in
+\hyperstructure{X}$.
+
+Tout élément $\hyperelement{x} \in \hyperstructure{X}$ appartenant à une monade
+est dit \og proche d'un standard \fg, c'est-à-dire qu'il existe $a \in X$ tel que
+$\hyperelement{x} \in \monadOf{a}$ ou encore qu'il existe $a \in X$ tel que
+\begin{equation}
+	\forall \epsilon > 0, \, \hyperelement{x} \in
+	\nonStandardVersion{B(a, \epsilon)}
+\end{equation}
+Donc un élément est proche d'un standard, c'est-à-dire appartient à
+$\nearStandard{\hyperstructure{X}}$, s'il est aussi proche qu'on veut d'un
+élément $a \in X$.
+
+Des équivalences dans le cas particulier où $I = \naturel$ sont données après.
+Commençons d'abord par le cas général.
+
+\begin{definition} [Elément fini]
+	Soit $(X, d)$ un espace métrique et soit $\hyperelement{x} \in
+	\hyperstructure{X}$.
+
+	On dit que $\hyperelement{x}$ est \textbf{fini} s'il existe $a \in X$ tel que
+	$\nonStandardVersion{d}(\hyperelement{x}, \nonStandardVersion{a}) \in
+	\finiteSet{\hyperreal}$.
+
+	L'ensemble des éléments finis est noté $\finiteSet{\hyperstructure{X}}$.
+\end{definition}
+
+En particulier, tout élément proche d'un standard est fini.
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique.
+
+	Alors $\nearStandard{\hyperstructure{X}} \subseteq
+	\finiteSet{\hyperstructure{X}}$
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Evident.
+\end{proof}
+\fi
+
+Remarquons que l'existence d'un $a \in X$ implique que c'est vrai pour tous
+élément de $X$. En effet,
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique et soit $\hyperelement{x} \in
+	\hyperstructure{X}$. Les assertions suivantes sont équivalentes.
+
+	\begin{enumerate}
+		\item $\hyperelement{x}$ est fini.
+		\item pour tout $a \in X$, $\nonStandardVersion{d}(\hyperelement{x},
+			\nonStandardVersion{a}) \in \finiteSet{\hyperreal}$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Cela découle du fait que $d(x, b) \leq d(x, a) + d(a, b)$ pour tous $x, a, b
+	\in X$ et que $d(a, b)$ est fini.
+\end{proof}
+\fi
+
+Regardons un peu mieux la définition d'élément fini.
+$\nonStandardVersion{d}(\hyperelement{x}, \nonStandardVersion{a})$ est un
+hyperréel. S'il est fini, cela signifie qu'il existe $\epsilon > 0$ tel que
+\begin{equation}
+	\GSsetDef{i \in I}{\abs{d(x_{i}, a)} < \epsilon} \in \mathcal{U}
+\end{equation}
+Donc $\hyperelement{x} \in \hyperstructure{X}$ est fini si $\hyperelement{x}$ ne
+s'éloigne pas trop souvent d'une boule $B(a, \epsilon)$, c'est-à-dire que
+$\hyperelement{x}$ reste presque tout le temps dans une boule $B(a, \epsilon)$.
+
+\begin{remarque}
+	La définition d'élément fini sur un espace métrique étend bien la notion
+	d'élément fini que nous avons étudiée dans le chapitre
+	\ref{chapter_hyperreal} sur l'espace métrique réel usuel.
+\end{remarque}
+
+Sur l'ensemble des éléments finis $\finiteSet{\hyperstructure{X}}$, nous allons
+créer une relation d'équivalence à partir de la distance.
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique et soit $\finiteSet{\hyperstructure{X}}$ les
+	éléments finis de $\hyperstructure{X}$.
+
+	Alors la relation
+	\begin{equation}
+		\hyperelement{x} \simeq \hyperelement{y} \equivalence
+		\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{y})
+		\infinelyClosed 0
+	\end{equation}
+	est une relation d'équivalence sur $\finiteSet{\hyperstructure{X}}$.
+\end{proposition}
+
+La relation d'équivalence nous dit que deux éléments sont en relation s'ils sont
+infiniment proches relativement à la distance $d$. Remarquons que nous sommes
+très proches de la relation d'équivalence définie dans le cas standard pour
+quotienter l'espace des suites sur $X$ pour construire son complété.
+
+\ifdefined\outputproof
+\begin{proof}
+	Rappelons que dans le cas hyperréel, $\hyperelement{x} \in \hyperreal$ est
+	infiniment proche de $0$ si $\hyperelement{x}$ est un infinitésimal,
+	c'est-à-dire que pour tout $\epsilon > 0$, $\nonStandardVersion{-\epsilon} <
+	\hyperelement{x} < \nonStandardVersion{\epsilon}$.
+	Nous devons donc montrer
+	\begin{enumerate}
+		\item pour tout $\hyperelement{x} \in \finiteSet{\hyperstructure{X}}$,
+			$\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{x})$ est
+			infinitésimal.
+		\item pour tout $\hyperelement{x}, \hyperelement{y} \in
+			\finiteSet{\hyperstructure{X}}$,
+			$\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{y})$ est
+			infinitésimal ssi
+			$\nonStandardVersion{d}(\hyperelement{y}, \hyperelement{x})$ est
+			infinitésimal.
+		\item pour tout $\hyperelement{x}, \hyperelement{y}, \hyperelement{z}
+			\in \finiteSet{\hyperstructure{X}}$,
+			si $\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{y})$ et
+			$\nonStandardVersion{d}(\hyperelement{y}, \hyperelement{z})$ sont
+			infinitésimaux, alors $\nonStandardVersion{d}(\hyperelement{x},
+			\hyperelement{z})$ est inifinitésmal.
+	\end{enumerate}
+	Chaque point est évident par les propriétés sur la distance et de la
+	définition de $\nonStandardVersion{d}$.
+\end{proof}
+\fi
+
+Maintenant que nous avons une relation d'équivalence sur
+$\finiteSet{\hyperstructure{X}}$, nous pouvons construire le quotient
+$\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}$ que nous notons
+$\tilde{X}$.
+
+\begin{remarque}
+	$X$ s'identifie à $\quotientSet{X}{\simeq}$ car si $x, y \in X$ et $x \simeq
+	y$, cela signifie que $\nonStandardVersion{d}(x, y) \infinelyClosed 0$,
+	c'est-à-dire que $x = y$. On peut donc voir $X$ comme un sous-ensemble de
+	$\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}$.
+\end{remarque}
+
+Sur ce quotient, nous
+allons définir naturellement une métrique $\tilde{d}$ à partir de la métrique $d$ sur $X$.
+
+\begin{proposition}
+	La fonction
+	\begin{equation}
+		\tilde{d} : \tilde{X} \cartprod \tilde{X} \rightarrow \real :
+		(\tilde{x}, \tilde{y}) \rightarrow
+		\standardPart{\hyperelementSequenceNoIndice{d}(\tilde{x}, \tilde{y})}
+	\end{equation}
+	est une métrique sur $\tilde{X}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Vérifions d'abord que $\tilde{d}$ est bien définie.
+
+	Soient $\hyperelement{x_{1}}$, $\hyperelement{x_{2}}$,
+	$\hyperelement{y_{1}}$, $\hyperelement{y_{2}} \in
+	\finiteSet{\hyperstructure{X}}$ tel que $\hyperelement{x_{1}} \simeq
+	\hyperelement{x_{2}}$ et $\hyperelement{y_{1}} \simeq \hyperelement{y_{2}}$.
+	Montrons que
+	\begin{equation}
+		st(\nonStandardVersion{d}(\hyperelement{x_{1}}, \hyperelement{y_{1}})) =
+	st(\nonStandardVersion{d}(\hyperelement{x_{2}}, \hyperelement{y_{2}}))
+	\end{equation}
+
+	On a
+	\begin{align}
+		\nonStandardVersion{d}(\hyperelement{x_{1}}, \hyperelement{y_{1}})
+		\leq & \nonStandardVersion{d}(\hyperelement{x_{1}},
+		\hyperelement{x_{2}}) +
+		\\
+		& \nonStandardVersion{d}(\hyperelement{x_{2}}, \hyperelement{y_{2}}) +
+		\\
+		& \nonStandardVersion{d}(\hyperelement{y_{2}}, \hyperelement{y_{1}})
+	\end{align}
+
+	Comme $st : \finiteSet{\hyperreal} \rightarrow \real$ est un morphisme
+	d'anneau et est une fonction croissante, on a
+	\begin{align}
+		st(\nonStandardVersion{d}(\hyperelement{x_{1}}, \hyperelement{y_{1}}))
+		\leq & st(\nonStandardVersion{d}(\hyperelement{x_{1}},
+		\hyperelement{x_{2}})) +
+		\\
+		& st(\nonStandardVersion{d}(\hyperelement{x_{2}}, \hyperelement{y_{2}})) +
+		\\
+		& st(\nonStandardVersion{d}(\hyperelement{y_{2}}, \hyperelement{y_{1}}))
+	\end{align}
+
+	Comme $\hyperelement{x_{1}} \simeq
+	\hyperelement{x_{2}}$ et $\hyperelement{y_{1}} \simeq \hyperelement{y_{2}}$,
+	on a $st(\nonStandardVersion{d}(\hyperelement{y_{2}}, \hyperelement{y_{1}}))
+	= 0$ et \\ $st(\nonStandardVersion{d}(\hyperelement{x_{1}},
+	\hyperelement{x_{2}})) = 0$.
+	D'où
+	\begin{equation}
+		st(\nonStandardVersion{d}(\hyperelement{x_{1}}, \hyperelement{y_{1}})) \leq
+	st(\nonStandardVersion{d}(\hyperelement{x_{2}}, \hyperelement{y_{2}}))
+	\end{equation}
+	On obtient l'autre inégalité par un même raisonnement.
+
+	Vérifions maintenant que $\tilde{d}$ est une métrique sur $\tilde{X}$.
+
+	\begin{enumerate}
+		\item Soit $\tilde{x} \in \tilde{X}$, $\tilde{d}(\tilde{x}, \tilde{x}) =
+			0$: vrai par la propriété $\nonStandardVersion{d}(\hyperelement{x},
+			\hyperelement{x}) = 0$ où $\hyperelement{x}$ est un représentant de
+			$\tilde{x}$.
+		\item Soient $\tilde{x}, \tilde{y} \in \tilde{X}$, $\tilde{d}(\tilde{x},
+			\tilde{y}) = \tilde{d}(\tilde{y}, \tilde{x})$: vrai par la
+			propriété $\nonStandardVersion{d}(\hyperelement{x},
+			\hyperelement{y}) = \nonStandardVersion{d}(\hyperelement{y},
+			\hyperelement{x})$ où $\hyperelement{x}$ (resp. $\hyperelement{y}$)
+			est un représentation de $\tilde{x}$ (resp. $\tilde{y}$).
+		\item Soient $\tilde{x}$, $\tilde{y}$, $\tilde{z} \in \tilde{X}$,
+			$\tilde{d}(\tilde{x}, \tilde{z}) \leq \tilde{d}(\tilde{x},
+			\tilde{y}) + \tilde{d}(\tilde{y}, \tilde{z})$: vrai car $st$ est un
+			morphisme d'anneau et une fonction croissante et
+			$\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{z}) \leq
+			\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{y}) +
+			\nonStandardVersion{d}(\hyperelement{y}, \hyperelement{z})$ pour
+			tout représentant.
+	\end{enumerate}
+\end{proof}
+\fi
+
+Nous obtenons alors un espace métrique $(\tilde{X}, \tilde{d})$. De plus, cet
+espace métrique est complet.
+
+\begin{proposition}
+	$(\tilde{X}, \tilde{d})$ est un espace métrique complet.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $\GSsequence{\tilde{x}}{n}{\naturel}$ une suite de Cauchy dans
+	$\tilde{X}$.
+
+	Pour chaque $n \in \naturel$, prenons un représentant
+	$\hyperelement{x_{n}}$ de $\tilde{x}_{n}$. On obtient donc une suite
+	$\GSsequence{\hyperelement{x}}{n}{\naturel}$ dans
+	$\finiteSet{\hyperstructure{X}}$.
+
+	On étend cette suite $\GSsequence{\hyperelement{x}}{n}{\naturel}$ en une
+	suite interne
+	$(\hyperelement{x}_{\hyperelement{n}})_{\hyperelement{n} \in
+	\nonStandardVersion{\naturel}}$.
+
+	Comme $\GSsequence{\tilde{x}}{n}{\naturel}$ est de Cauchy,
+	$\GSsequence{\hyperelement{x}}{n}{\naturel}$ l'est aussi.
+	Alors, pour tout $m \in \naturel$, il existe $N_{m} \in \naturel$ tel que
+	pour tout $\hyperelement{n} \in \nonStandardVersion{\naturel}$,
+	$\hyperelement{n} \geq N_{m}$,
+	\begin{equation}
+		\nonStandardVersion{d}(\hyperelement{x}_{\nonStandardVersion{N_{m}}},
+		\hyperelement{x}_{\hyperelement{n}}) \leq \frac{1}{m}
+		\label{cauchy_internal_sequence}
+	\end{equation}
+
+	L'ensemble
+	\begin{equation}
+		B_{m} := \GSsetDef{\hyperelement{n} \in
+		\nonStandardVersion{\naturel}}{\nonStandardVersion{d}(x_{\nonStandardVersion{N_{m}}},
+		x_{\hyperelement{n}}) \leq \frac{1}{m}}
+	\end{equation}
+	possède des éléments finis arbitrairement grands. D'où, par overflow
+	(\ref{overflow}), il existe un naturel non-standard infini $H_{m} \in
+	B_{m}$.
+
+	Posons
+	\begin{equation}
+		A_{m} := \GSsetDef{\hyperelement{k} \in
+			\nonStandardVersion{\naturel}}{\nonStandardVersion{m} \leq
+			\hyperelement{k} \leq H_{m}}
+	\end{equation}
+	La famille $\GSsequence{A}{m}{\naturel}$ possède la propriété
+	d'intersection finie (vu que $H_{m}$ est infini pour tout $m \in \naturel$).
+
+	Par saturation, il existe $H \in \nonStandardVersion{\naturel}$ tel que pour
+	tout $m \in \naturel$, $\nonStandardVersion{m} \leq H$ (d'où $H$ est
+	infini). En particulier (\ref{cauchy_internal_sequence}),
+	$\nonStandardVersion{d}(\hyperelement{x_{H}},
+	\hyperelement{x_{\nonStandardVersion{N_{m}}}})) \leq
+	\frac{1}{m}$ pour tout $m \in \naturel$.
+
+	Soit $m \in \naturel$, comme $\GSsequence{\hyperelement{x}}{n}{\naturel}$
+	est de Cauchy, il existe $N_{m}$ tel que pour tout $n_{1}, n_{2} \in
+	\naturel$,
+	\begin{equation}
+		\nonStandardVersion{d}(\hyperelement{x_{n_{1}}},
+		\hyperelement{x_{n_{2}}}) \leq \frac{1}{m}
+	\end{equation}
+
+	Soit $n \in \naturel$ tel que $n \geq N_{m}$,
+	par les propriétés sur $\nonStandardVersion{d}$,  et comme
+	$\GSsequence{\hyperelement{x}}{\hyperelement{n}}{\nonStandardVersion{\naturel}}$ étend la
+	suite $\GSsequence{\hyperelement{x}}{n}{\naturel}$, on a
+	\begin{align}
+		\nonStandardVersion{d}(\hyperelement{x_{n}}, \hyperelement{x_{H}}) &
+		\leq \nonStandardVersion{d}(\hyperelement{x_{n}},
+		\hyperelement{x_{N_{m}}}) +
+		\nonStandardVersion{d}(\hyperelement{x_{N_{m}}}, \hyperelement{x_{H}}) \\
+		& \leq \frac{1}{m} + \frac{1}{m}
+	\end{align}
+
+	d'où
+	\begin{equation}
+		st(\nonStandardVersion{d}(\hyperelement{x_{n}}, \hyperelement{x_{H}}))
+		\leq \frac{2}{m}
+	\end{equation}
+	c'est-à-dire, en revenant dans $\tilde{X}$,
+	\begin{equation}
+		\tilde{d}(\tilde{x}_{n}, \tilde{x}_{H}) \leq \frac{2}{m}
+	\end{equation}
+	ou encore que $\GSsequence{\tilde{x}}{n}{\naturel}$ tend vers
+	$\tilde{x}_{H}$.
+	\label{finite_set_complete_metric}
+\end{proof}
+\fi
+
+Souvent, l'espace métrique complet
+$(\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}, \tilde{d})$ est
+trop gros pour être le complété de $(X, d)$. On a besoin de réduire l'ensemble
+sur lequel on quotiente et c'est là qu'intervient
+$\preNearStandard{\hyperstructure{X}}$ que nous allons définir.
+
+La définition de \og proche d'un standard \fg est assez forte car elle demande
+que l'élément soit presque tout le temps dans une boule centrée par un
+\textit{même} point. Nous allons définir une notion un peu plus générale qui est
+\og presque proche d'un standard \fg.
+
+\begin{definition}
+	Soit $(X, d)$ un espace métrique. Soit $\hyperelement{x} \in
+	\hyperstructure{X}$.
+
+	On dit que $\hyperelement{x}$ est \textbf{presque proche d'un standard} si
+	pour tout $\epsilon > 0$, il existe $a \in X$ tel que $\hyperelement{x} \in
+	\nonStandardVersion{B(a, \epsilon)}$ (c'est-à-dire
+	$\nonStandardVersion{d}(\hyperelement{x}, \nonStandardVersion{a}) <
+	\epsilon$).
+
+	L'ensemble de tous les éléments presque proches d'un standard est noté
+	$\preNearStandard{\hyperstructure{X}}$.
+\end{definition}
+
+Les presque proches d'un standard sont donc les éléments qui se trouvent presque
+entièrement dans une boule centrée en un point $a \in X$, et ce quelque soit la
+taille de la boule. En d'autres termes, ce sont les éléments qui sont toujours
+au moins dans la boule d'un élément de $X$.
+
+Regardons le lien avec les éléments proches d'un standard.
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique.
+
+	Alors $\nearStandard{\hyperstructure{X}} \subseteq
+	\preNearStandard{\hyperstructure{X}}$.
+	En d'autres termes, tout élément proche d'un standard est presque proche d'un
+	standard.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $\hyperelement{x} \in \nearStandard{\hyperstructure{X}}$. Donc, il
+	existe $a \in X$ tel que pour tout $\epsilon_{1} > 0$, $\hyperelement{x} \in
+	\nonStandardVersion{B(a, \epsilon_{1})}$.
+
+	Soit $\epsilon > 0$. En prenant le $a$ donné précédemment, on a bien
+	$\nonStandardVersion{B(a, \epsilon)}$. D'où $\hyperelement{x} \in
+	\preNearStandard{\hyperstructure{X}}$.
+\end{proof}
+\fi
+
+Grâce à cette dernière proposition, nous obtenons la chaîne d'inclusion
+\begin{equation}
+	X \subseteq \nearStandard{\hyperstructure{X}} \subseteq
+	\preNearStandard{\hyperstructure{X}} \subseteq
+	\finiteSet{\hyperstructure{X}} \subseteq \hyperstructure{X}
+\end{equation}
+
+On peut alors parler de
+$\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$.
+
+\begin{proposition}
+	$\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$ est fermé dans
+	$\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}$.
+
+	En particulier, comme $\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}$
+	est complet, $\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$ est
+	complet.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $\GSsequence{\hyperelement{\tilde{x}}}{n}{\naturel}$ une suite
+	d'élément de $\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$
+	convergeante vers $\hyperelement{\tilde{x}} \in
+	\quotientSet{\finiteSet{\hyperstructure{X}}}{\simeq}$.
+
+	Soit $\GSsequence{\hyperelement{x}}{n}{\naturel}$ une suite de
+	$\preNearStandard{\hyperstructure{X}}$ construite en prenant des
+	représentants de chaque $\hyperelement{\tilde{x_{n}}}$.
+	Soit $\hyperelement{x}$ un représentant de $\hyperelement{\tilde{x}}$.
+
+	Montrons que $\hyperelement{x} \in \preNearStandard{\hyperstructure{X}}$. On
+	aura alors que $\hyperelement{\tilde{x}} \in
+	\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$.
+
+	Il faut montrer que pour tout $\epsilon > 0$, il existe $a \in X$ tel que
+	$\hyperelement{x} \in \nonStandardVersion{B}(a, \epsilon)$.
+
+	Soit $\epsilon > 0$.
+	\begin{itemize}
+		\item On sait qu'il existe $n_{0} \in \naturel$ tel que pour tout $n
+			\geq n_{0}$, $\nonStandardVersion{d}(\hyperelement{x},
+			\hyperelement{x_{n}}) \leq \frac{\epsilon}{2}$
+		\item il existe $a \in X$ tel que
+			$\nonStandardVersion{d}(\hyperelement{x_{n_{0}}},
+			\nonStandardVersion{a}) \leq \frac{\epsilon}{2}$.
+	\end{itemize}
+
+	D'où
+	\begin{align}
+		\nonStandardVersion{d}(\hyperelement{x}, \nonStandardVersion{a}) & \leq
+		\nonStandardVersion{d}(\hyperelement{x}, \hyperelement{x_{n_{0}}}) +
+		\nonStandardVersion{d}(\hyperelement{x_{n_{0}}}, \nonStandardVersion{a})
+		\\
+		& \leq \frac{\epsilon}{2} + \frac{\epsilon}{2}
+	\end{align}
+\end{proof}
+\fi
+
+\begin{proposition}
+	$\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$ est le complété
+	de $(X, d)$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Il suffit de montrer que $X$ est dense dans
+	$\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$, c'est-à-dire
+	$\adh{X} = \quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$.
+
+	Clairement, comme
+	$\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$ est fermé, on a
+	$\adh{X} \subseteq
+	\quotientSet{\preNearStandard{\hyperstructure{X}}}{\simeq}$.
+	%TODO
+\end{proof}
+\fi
+
+\subsubsection*{Cas où $I = \naturel$}
+
+Quand $I = \naturel$, nous obtenons des équivalences intéressantes et qui nous
+permettent de catégoriser de manière \og standard \fg les proches d'un standards
+et presque proches d'un standard. Ces
+équivalences permettent de dire que la définition de
+$\preNearStandard{\hyperstructure{X}}$ est plus générale que
+$\nearStandard{\hyperstructure{X}}$.
+
+\begin{proposition}
+	\label{near_standard_subsequence_convergente}
+	Soit $(X, d)$ un espace métrique et soit $\hyperelementSequence{x} \in
+	\hyperstructure{X}$. Alors, les assertions suivantes sont équivalentes:
+
+	\begin{enumerate}
+	  \item $\hyperelementSequence{x} \in \nearStandard{\hyperstructure{X}}$
+	  \item $\GSsequence{x}{n}{\naturel}$ possède une sous-suite convergente.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	$(1) \implies (2)$:
+
+	Comme $\hyperelementSequence{x} \in \nearStandard{\hyperstructure{X}}$, il
+	existe $a \in X$ tel que pour tout $\epsilon > 0$, $\hyperelementSequence{x}
+	\in \nonStandardVersion{B(a, \epsilon)}$.
+
+	On a donc
+	\begin{equation}
+		A_{\epsilon} := \GSsetDef{n \in \naturel}{x_{n} \in B(a, \epsilon)} \in
+		\mathcal{U}
+	\end{equation}
+	et de plus, $A_{\epsilon}$ est infini car sinon $\comp{A_{\epsilon}}$
+	est cofini et appartient donc à $\mathcal{U}$.
+	En particulier, pour tout $m \in \naturel$, il existe $n_{m} \in A_{m}$ aussi grand
+	qu'on veut tel que $x_{n_{m}} \in B(a, \frac{1}{m})$.
+
+	On construit la sous-suite récursivement:
+	\begin{itemize}
+		\item Pour $m = 1$, on trouve un $n_{1}$ (par exemple $n_{1} =
+			\min(A_{1})$) tel que $x_{n_{1}} \in B(a, 1)$.
+		\item Pour $k = m + 1$, on prend un $n_{k} \in A_{k} \backslash \GSset{0, \dots,
+				n_{m}}$ (pour être sûr que $n_{k} > n_{m}$) tel que $x_{n_{k}}
+				\in B(a, \frac{1}{k})$.
+	\end{itemize}
+
+	La suite $(x_{n_{m}})_{m \in \naturel}$ ainsi construite converge vers $a$.
+
+	$(2) \implies (1)$:
+
+	Soit $\GSsequence{x'}{n}{\naturel}$ une sous suite de
+$\GSsequence{x}{n}{\naturel}$ convergeant vers $a \in X$.
+
+	Soit $\epsilon > 0$. Il existe $n_{0} \in \naturel$ tel que pour tout $n
+	\geq  n_{0}$,
+	\begin{equation}
+	  d(x'_{n}, a) \leq \epsilon
+	\end{equation}
+	D'où, pour tout $\epsilon > 0$,
+	\begin{equation}
+	  A'_{\epsilon} := \GSsetDef{n \in \naturel}{d(x'_{n}, a) \leq \epsilon} \in
+\mathcal{U}
+	\end{equation}
+	car
+	\begin{equation}
+		\overbrace{\GSsetDef{n \in \naturel}{n \geq n_{0}}}^{\subseteq
+			A'_{\epsilon}}
+	  \in \mathcal{U}
+	\end{equation}
+
+	D'où, $\hyperelementSequence{x'} \in \nonStandardVersion{B(a, \epsilon)}$.
+	Il en est alors de même pour $\hyperelementSequence{x}$ car $A'_{\epsilon}
+	\subseteq A_{\epsilon}$ où
+	\begin{equation}
+		A_{\epsilon} = \GSsetDef{n \in \naturel}{d(x_{n}, a) \leq \epsilon}
+	\end{equation}
+\end{proof}
+\fi
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique.
+
+	Soit $\hyperelementSequence{x} \in \hyperstructure{X}$. Les assertions
+suivantes sont équivalentes:
+
+	\begin{enumerate}
+		\item $\hyperelementSequence{x} \in
+			\preNearStandard{\hyperstructure{X}}$
+		\item $\GSsequence{x}{n}{\naturel}$ possède une sous-suite de Cauchy.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	$(1) \implies (2)$:
+
+	Soit $m \in \naturel^{> 0}$. Comme $\hyperelementSequence{x} \in
+	\preNearStandard{\hyperstructure{X}}$, on sait qu'il existe $a_{m} \in X$
+	tel que
+	\begin{equation}
+		A_{m} = \GSsetDef{n \in \naturel}{d(x_{n}, a_{m}) \leq \frac{1}{m}} \in
+		\mathcal{U}
+	\end{equation}
+
+	Posons
+	\begin{equation}
+		B_{m} = \inter_{1 \leq i \leq m} A_{i}
+	\end{equation}
+	Nous avons $B_{m} \in \mathcal{U}$ car chaque $A_{i} \in \mathcal{U}$.
+	Nous avons aussi
+	\begin{align}
+		n \in B_{m} & \equivalence \forall i \in \GSset{1, \cdots, m}, d(x_{n},
+		a_{i}) \leq \frac{1}{i} \\
+		& \equivalence d(x_{n}, a_{1}) \leq 1 \\
+		& \wedge d(x_{n}, a_{2}) \leq \frac{1}{2} \\
+		& \wedge \cdots \\
+		& \wedge d(x_{n}, a_{m}) \leq \frac{1}{m}
+	\end{align}
+
+	Nous remarquons que $B_{m}$ est infini et $m_{1} \leq m_{2} \equivalence
+	B_{m_{2}} \subseteq B_{m_{1}}$.
+	De plus, pour $j \leq m$, on a
+	\begin{align}
+		d(a_{j}, a_{m}) & \leq d(a_{j}, x_{m}) + d(x_{m}, a_{m}) \\
+		& \leq \frac{1}{j} + \frac{1}{m} \\
+		& \leq \frac{2}{j}
+	\end{align} pour un $x_{m} \in B_{m}$.
+
+	Passons à la construction de la sous-suite de Cauchy
+	$\GSsequence{x'}{n}{\naturel}$. Celle-ci se fait de
+	manière récursive comme lors de la preuve de
+	\ref{near_standard_subsequence_convergente}.
+
+	\begin{itemize}
+		\item $n = 1$: $x'_{1} = x_{m_{1}}$ où $m_{1} = \min B_{1}$.
+		\item $n = k + 1$: $x'_{n} = x_{m_{n}}$ où $m_{n} = \min B_{n}
+			\backslash
+			\GSset{0, \cdots, m_{k}}$.
+	\end{itemize}
+
+	Montrons maintenant que $(x_{m_{n}})_{n \in \naturel}$ est de Cauchy,
+	c'est-à-dire que pour tout $m \in \naturel$, il existe $i \in \naturel$
+	tel que pour tout $k \geq j \geq i \in \naturel$, $d(x_{m_{j}},
+	x_{m_{k}}) \leq \frac{c}{m}$ où $c$ est une constante quelconque.
+
+	Soit $m \in \naturel$. Posons $i = m$. Soit $k \geq j \geq
+	i$. On a
+	\begin{align}
+		d(x_{m_{j}}, x_{m_{k}}) & \leq d(x_{m_{j}}, a_{j}) \\
+		& + d(a_{j}, a_{k}) \\
+		& + d(a_{k}, x_{m_{k}}) \\
+	\end{align}
+	et
+	\begin{enumerate}
+		\item $m_{j} \in B_{j} \implies d(x_{m_{j}}, a_{j}) \leq \frac{1}{j}$
+		\item $j \leq k \implies d(a_{j}, a_{k}) \leq \frac{1}{j}$
+		\item $m_{k} \in B_{k} \implies d(a_{k}, x_{m_{k}}) \leq \frac{1}{k}
+			\leq \frac{1}{j}$
+	\end{enumerate}
+
+	Et comme $j \geq i = m$, cela nous donne
+	\begin{equation}
+		d(x_{m_{j}}, x_{m_{k}}) \leq \frac{3}{j} \leq \frac{3}{m}
+	\end{equation}
+
+	$(2) \implies (1)$:
+
+	Soit $\GSsequence{x'}{n}{\naturel}$ une sous-suite de Cauchy de
+	$\GSsequence{x}{n}{\naturel}$. Pour $\epsilon
+	> 0$ fixé, il existe $n_{0}$ tel que pour tout $m, n \geq n_{0}$, $d(x'_{m},
+	x'_{n}) \leq \epsilon$.
+
+	En fixant $n = n_{0}$, on a
+	\begin{equation}
+		A'_{\epsilon} = \GSsetDef{m \in \naturel}{d(x'_{m}, x'_{n_{0}} \leq \epsilon} \in
+		\mathcal{U}
+	\end{equation}
+	(car cofini). De plus,
+	\begin{equation}
+		A'_{\epsilon} \subseteq A_{\epsilon} = \GSsetDef{m \in
+		\naturel}{d(x_{m}, x'_{n_{0}} \leq \epsilon}
+	\end{equation}
+	implique que $\nonStandardVersion{d}(\hyperelementSequence{x},
+	\nonStandardVersion{x'_{n_{0}}}) \leq \epsilon$.
+
+	D'où $\hyperelementSequence{x} \in \preNearStandard{\hyperstructure{X}}$.
+\end{proof}
+\fi
+
+En particulier, nous avons l'égalité
+entre $\nearStandard{\hyperstructure{X}} =
+\preNearStandard{\hyperstructure{X}}$ si et seulement si $X$ est complet.
+
+\begin{proposition}
+	Soit $(X, d)$ un espace métrique. Alors, les assertions suivantes sont
+	équivalentes.
+
+	\begin{enumerate}
+		\item $(X, d)$ est complet.
+		\item $\preNearStandard{\hyperstructure{X}} =
+			\nearStandard{\hyperstructure{X}}$
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	$(1) \implies (2)$. Nous avons montré que $\nearStandard{\hyperstructure{X}}
+	\subseteq \preNearStandard{\hyperstructure{X}}$. Il nous reste donc à
+	montrer que $\preNearStandard{\hyperstructure{X}} \subseteq
+	\nearStandard{\hyperstructure{X}}$.
+
+
+	On a montré que toute suite
+	$\GSsequence{x}{n}{\naturel}$ tel que $\hyperelementSequence{x} \in
+	\preNearStandard{\hyperstructure{X}}$ contient une sous-suite de Cauchy
+	$\GSsequence{x'}{n}{\naturel}$. Comme $X$ est complet, il existe
+	alors un élément $x \in X$ tel que $\GSsequence{x'}{n}{\naturel}$
+	converge vers $x$. Donc $\hyperelementSequence{x}$ contient une sous-suite
+	convergeante, c'est-à-dire que $\hyperelementSequence{x} \in
+	\nearStandard{\hyperstructure{X}}$;
+
+	$(2) \implies (1)$.
+
+	Soit $\GSsequence{x}{n}{\naturel}$ une suite de Cauchy de $X$ et notons
+	$\hyperelementSequence{x}$ l'élément de $\hyperelement{X}$ engendré par
+	$\GSsequence{x}{n}{\naturel}$. Comme $\hyperelementSequence{x}$ est de
+	Cauchy, elle est dans $\preNearStandard{\hyperstructure{X}}$.
+
+	Par hypothèse,
+	$\preNearStandard{\hyperstructure{X}} \subseteq
+	\nearStandard{\hyperstructure{X}}$ donc $\hyperelement{x} \in
+	\nearStandard{\hyperstructure{X}}$.
+
+	Comme $\hyperelementSequence{x} \in \nearStandard{\hyperstructure{X}}$,
+	$\hyperelementSequence{x}$ contient une sous-suite convergente. Comme
+	$\GSsequence{x}{n}{\naturel}$ est de Cauchy et qu'elle contient une suite
+	convergente, $\GSsequence{x}{n}{\naturel}$ converge.
+\end{proof}
+\fi
+
+\subsection{Espaces métriques non standards}
+
+On peut également définir des espaces métriques non standards.
+\begin{definition}
+	\textbf{Un espace métrique non standard} est un ensemble interne $X$ muni
+		d'une fonction interne $d : X \cartprod X \rightarrow \hyperreal$ tel
+		que les axiomes de métriques sont respectées.
+\end{definition}
+
+Clairement, toute version non standard d'un espace métrique est un espace
+métrique non standard.
+
+On
+peut généraliser les espaces $l_{p}(n)$ en leur version non standard en
+remplaçant les suites par des suites internes.
+
+Soient $p \in \hyperreal$ et $n \in \nonStandardVersion{\naturel}$.
+
+On définit l'espace métrique $(l_{p}(n), d)$ où $l_{p}(n)$ est l'ensemble des
+suites internes $x_{1}, \cdots, x_{n}$ d'hyperréels et
+\begin{align} d(x, y) &
+	:= \GSnormeDef{x - y}{p} \\ & := \sum_{i = 1}^{n}(x_{i} -
+	y_{i})^{\frac{1}{p}}
+\end{align}
+
+On peut définir les éléments finis de $X$: on se fixe un point de référence $a
+\in X$ et les éléments finis sont les $x \in X$ tel que $d(x, a)$ (qui est
+hyperréel) est fini. L'ensemble des points finis est aussi noté $\finiteSet{X}$
+et on définit de la même manière une relation d'équivalence $\simeq$ sur
+$\finiteSet{X}$ ainsi que la métrique $\tilde{d}$ associée.
+On obtient alors le même résultat, c'est-à-dire que
+$(\quotientSet{\finiteSet{X}}{\simeq}, \tilde{d})$ est un espace complet.
+
+\subsection{Espaces vectoriels internes}
+
+Passons maintenant à la définition d'un espace vectoriel interne sur
+$\hyperreal$, généralisation d'un espace vectoriel réel.
+
+\begin{definition}
+	\textbf{Un espace vectoriel interne sur $\hyperreal$} est un ensemble
+	\textit{interne} $X$ muni d'une application \textit{interne} (addition)
+	\begin{equation}
+		X \cartprod X \rightarrow X : (x, y) \rightarrow x + y
+	\end{equation}
+	et d'une application \textit{interne} (multiplication scalaire)
+	\begin{equation}
+		\hyperreal \cartprod X \rightarrow X : (a, x) \rightarrow ax
+	\end{equation}
+	satisfaisant les axiomes usuelles d'espace vectoriel.
+
+	$X$ est \textbf{de dimension $n$} s'il existe des éléments internes $x_{1},
+	\cdots, x_{n} \in X$ tel que tout élément $x \in X$ s'écrit de manière
+	unique comme combinaison linaire de $x_{1}, \cdots, x_{n}$ à coefficients
+	dans $\hyperreal$.
+
+	$X$ est \textbf{hyperfini dimensionnel} s'il est de dimension $N$ pour un $N
+	\in \nonStandardVersion{\naturel}$.
+\end{definition}
+
+
+On obtient le résultat suivant directement en utilisant la polysaturation.
+
+\begin{proposition}
+	Soit $E$ un espace vectoriel de dimension infinie sur $\real$.
+
+	Alors il existe un espace vectoriel interne de dimension hyperfinie sur
+	$\hyperreal$, noté $X$ tel que $E \subseteq X \subseteq \hyperstructure{E}$.
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Soit $S \subseteq E$ un ensemble fini. On définit l'ensemble
+	\begin{equation}
+		A_{S} = \GSsetDef{X \subseteq \hyperstructure{E}}{X \text{ sous-espace
+		linéaire de dimension hyperfinie avec } S \subseteq X}
+	\end{equation}
+
+	La famille $(A_{S})_{S \subseteq E, \text{fini}}$ possède la propriété des
+	intersections finies non vides donc par polysaturation, il existe $X \in
+	\inter_{S \subseteq E, \text{fini}} A_{S}$ qui satisfait la proposition.
 \end{proof}
 \fi

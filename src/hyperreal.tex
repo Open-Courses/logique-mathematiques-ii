@@ -1,5 +1,7 @@
 \chapter{Analyse non standard et hyperréels}
 
+\label{chapter_hyperreal}
+
 \section{Construction}
 
 Nous allons construire l'ensemble des hyperréels qui étendra le corps des réels.
@@ -26,7 +28,7 @@ hyperréels}.
 On note les éléments de $\hyperreal$ par $\hyperelement{x}$,
 $\hyperelementSequence{x}$ quand nous devons spécifier de quelle suite
 l'hyperréel a été construit. Nous utiliserons plus rarement la notation
-$\hyperelement{x}{\mathcal{U}}$ pour $\hyperelement{x}$ (resp.
+$\hyperelementUltra{x}{\mathcal{U}}$ pour $\hyperelement{x}$ (resp.
 $\hyperelementSequenceUltra{x}{\mathcal{U}}$) quand nous voulons spécifier l'ultrafiltre
 sous-jacent.
 
@@ -37,8 +39,8 @@ nous utiliserons $\hyperelement{x}$.
 	Soient $\hyperelement{x}$, $\hyperelement{y}$ deux hyperréels. On dit que
 	$\hyperelement{x}$ et $\hyperelement{y}$ sont \textbf{de la même forme}
 	s'ils appartiennent à la même classe d'équivalence. On dit aussi que
-	$\hyperelement{x}$ (resp. $\hyperelement{y}$) est de la forme
-	$\hyperelement{y}$ (resp. $\hyperelement{x}$).
+	\textbf{$\hyperelement{x}$ (resp. $\hyperelement{y}$) est de la forme
+	$\hyperelement{y}$ (resp. $\hyperelement{x}$)}.
 \end{definition}
 
 On peut étendre les opérations et l'ordre usuels de $\real$ à $\hyperreal$ de la façon
@@ -62,8 +64,9 @@ On obtient évidemment une injection de $\real$ dans $\hyperreal$ avec
 où on prend la classe d'équivalence de la suite constante de valeur $x$. Nous
 garderons la notation $\nonStandardVersion{x}$ pour désigner l'hyperréel défini
 à partir du réel $x$. On dit que $\nonStandardVersion{x}$ est la \textbf{version
-non standard} de $x$. Nous définirons plus tard les versions non standard des
-sous-ensembles de $\real$.
+non standard} de $x$. Les éléments de la forme $\nonStandardVersion{x}$ sont
+appelés les éléments \textbf{standards}. Nous définirons plus tard les versions
+non standard des sous-ensembles de $\real$.
 
 Ces deux opérations et l'ordre définies étendent les opérations réelles et
 donnent une structure de corps ordonné sur $\hyperreal$.
@@ -73,6 +76,12 @@ donnent une structure de corps ordonné sur $\hyperreal$.
 	\nonStandardVersion{1},
 <_{\hyperreal})$ est un corps ordonné.
 \end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+	Par Los.
+\end{proof}
+\fi
 
 \section{Eléments infinitésimaux et finis}
 
@@ -146,11 +155,11 @@ types d'éléments. Nous souhaitons définir \textit{être proche de zéro} ie
 	Soit $\hyperelement{x} \in \finiteSet{\hyperreal}$ un hyperréel fini.
 
 	Alors, il existe un unique $a \in \real$ et un unique
-	$\nonStandardVersion{\epsilon} \in \hyperreal$
+	$\hyperelement{\epsilon} \in \hyperreal$
 	infinitésimal tel que
 	\begin{equation}
 		\hyperelement{x} = \nonStandardVersion{a} +
-		\nonStandardVersion{\epsilon}
+		\hyperelement{\epsilon}
 	\end{equation}
 
 	En particulier, il existe un unique réel $a$ tel que $\hyperelement{x}
@@ -166,10 +175,10 @@ types d'éléments. Nous souhaitons définir \textit{être proche de zéro} ie
 \begin{definition} [Partie standard]
 	Soit $\hyperelement{x} \in \hyperreal$ fini.
 
-	L'unique réel $a$ tel que $\nonStandardVersion{a} \infinelyClosed
-	\hyperelement{x}$ est appelé \textbf{partie standard de $\hyperelement{x}$}
-	et est noté $\standardPartExpo{x}$ ou encore $\standardPart{x}$. Nous
-	utiliserons la notation $\standardPart{x}$.
+	L'unique réel $a$ tel que $\hyperelement{x} \infinelyClosed
+	\nonStandardVersion{a}$ est appelé \textbf{partie standard de
+		$\hyperelement{x}$} et est noté $\standardPartExpo{x}$ ou encore
+		$\standardPart{x}$. Nous utiliserons la notation $\standardPart{x}$.
 \end{definition}
 
 \begin{notation}
@@ -178,6 +187,24 @@ types d'éléments. Nous souhaitons définir \textit{être proche de zéro} ie
 		\standardPart{A} = \GSsetDef{st(x)}{x \in A}
 	\end{equation}
 \end{notation}
+
+\begin{proposition}
+	La fonction
+	\begin{equation}
+		st : \finiteSet{\hyperreal} \rightarrow \real
+	\end{equation}
+	est
+	\begin{enumerate}
+		\item un morphisme d'anneau.
+		\item une projection, c'est-à-dire $st \circ st = st$.
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
 
 Montrons quelques applications des infinitésimaux et plus généralement des
 notions que nous avons vues. Nous allons montrer des résultats usuels d'analyse
@@ -351,10 +378,11 @@ ensemble externe.
 	Soit $A \subseteq \hyperreal$ un ensemble interne.
 
 	\begin{enumerate}
-		\item Si $A$ contient des élément finis arbitrairement grands, alors $A$
-			contient un élément infini.
-		\item Si $A$ contient des éléments positifs infinis arbitrairement
-			petits, alors $A$ contient un élément fini.
+		\item \label{overflow} (overflow) Si $A$ contient des élément finis
+			arbitrairement grands, alors $A$ contient un élément infini.
+		\item \label{underflow} (underflow) Si $A$ contient des éléments
+			positifs infinis arbitrairement petits, alors $A$ contient un
+			élément fini.
 	\end{enumerate}
 \end{proposition}
 

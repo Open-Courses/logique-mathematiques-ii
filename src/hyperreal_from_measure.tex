@@ -1,7 +1,46 @@
 \chapter{Construction des hyperréels et des superstructures grace à une mesure}
 
-Pour le reste du document, nous fixons une mesure additive finie $m$ répondant
-aux critères précédent.
+Nous supposons que nous travaillons dans un espace mesurable $(X, \mathcal{A})$.
+
+\begin{definition}
+	Soit $(X, \mathcal{A})$ un espace mesurable.
+	Soit $\mu : \mathcal{A} \rightarrow [0, + \infty]$ une fonction.
+
+	On dit que $\mu$ est \textbf{une mesure simplement additive ou finiment
+	additive} si
+	\begin{enumerate}
+		\item $\mu(\emptyset) = 0$
+		\item pour tous $A_{1}$, $A_{2} \in \mathcal{A}$ disjoints,
+			\begin{equation}
+				\mu(A_{1} \union A_{2}) = \mu(A_{1}) + \mu(A_{2})
+			\end{equation}
+	\end{enumerate}
+\end{definition}
+
+Notre construction des hyperréels sera basée sur une mesure finiment additive
+respectant une propriété supplémentaire.
+
+\begin{proposition}
+	Il existe des mesures finiment additives $m : \powerSet{\naturel} \rightarrow
+	\GSset{0, 1}$ tel que
+	\begin{enumerate}
+		\item $m$ est nul sur tout sous-ensemble fini de $\naturel$
+		\item $m(\naturel) = 1$
+	\end{enumerate}
+\end{proposition}
+
+\ifdefined\outputproof
+\begin{proof}
+
+\end{proof}
+\fi
+
+Remarquons que pour une telle mesure $m$, nous n'avons pas $m(A) = 1$ et
+$m(\comp{A}) = 1$. En effet, si c'était le cas, on aurait $m(\naturel) = 2$. Or
+$m(\naturel) = 1$.
+
+Pour le reste de cette annexe, nous fixons une mesure finiment additive $m$
+répondant aux critères de la proposition précédente.
 
 \begin{notation}
 	Soit $\real$ l'ensemble des nombres réels. On note $\mathcal{S}$ l'ensemble
@@ -11,7 +50,8 @@ aux critères précédent.
 \begin{definition}
 	On définit la relation $\approx$ sur l'ensemble $\mathcal{S}$ par
 	\begin{equation}
-		(a_{n}) \approx (b_{n}) \equiv m(\GSsetDef{n \in \naturel}{a_{n} = b_{n}})
+		(a_{n}) \approx (b_{n}) \equiv m(\GSsetDef{n \in \naturel}{a_{n} =
+		b_{n}}) = 1
 	\end{equation}
 \end{definition}
 
